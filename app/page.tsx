@@ -1,16 +1,56 @@
+'use client'
+
+import { useState } from 'react'
+import { ArrowRight, BarChart3, Check, ChevronDown, CircleDollarSign, Menu, MessageCircle, Package, ShieldCheck, Sparkles, X, Zap } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+
+const faqs = [
+  ['¿Necesito conocimientos técnicos?', 'No. AmaxTech está diseñado para que cualquier equipo pueda operar su catálogo, clientes y ventas desde el primer día.'],
+  ['¿Puedo conectar mis canales actuales?', 'Sí. Centraliza WhatsApp, tienda online, marketplaces y ventas manuales en un solo espacio.'],
+  ['¿Hay permanencia mínima?', 'No. Puedes cambiar de plan o cancelar cuando quieras, sin contratos complicados.'],
+]
+
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [faq, setFaq] = useState<number | null>(0)
+  const [currency, setCurrency] = useState('USD')
+  const [email, setEmail] = useState('')
+  const [sent, setSent] = useState(false)
+
+  const submitLead = (e: React.FormEvent) => { e.preventDefault(); if (email) setSent(true) }
+
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            sales
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
+    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+          <a href="#inicio" className="flex items-center gap-2 font-bold tracking-tight"><span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Zap /></span><span className="text-xl">amax<span className="text-primary">tech</span></span></a>
+          <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex"><a href="#producto" className="hover:text-foreground">Producto</a><a href="#soluciones" className="hover:text-foreground">Soluciones</a><a href="#precios" className="hover:text-foreground">Precios</a><a href="#faq" className="hover:text-foreground">FAQ</a></nav>
+          <div className="hidden items-center gap-3 md:flex"><Button variant="ghost">Iniciar sesión</Button><Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild><a href="#contacto">Hablar con ventas <ArrowRight data-icon="inline-end" /></a></Button></div>
+          <button aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
         </div>
-      </main>
-    </div>
-  );
+        {menuOpen && <nav className="flex flex-col gap-4 border-t border-border px-5 py-5 text-sm md:hidden"><a href="#producto" onClick={() => setMenuOpen(false)}>Producto</a><a href="#soluciones" onClick={() => setMenuOpen(false)}>Soluciones</a><a href="#precios" onClick={() => setMenuOpen(false)}>Precios</a><Button asChild><a href="#contacto">Hablar con ventas</a></Button></nav>}
+      </header>
+
+      <section id="inicio" className="relative mx-auto max-w-7xl px-5 pb-20 pt-20 lg:px-8 lg:pb-28 lg:pt-28"><div className="grid items-center gap-14 lg:grid-cols-[1fr_0.95fr]">
+        <div><div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"><Sparkles data-icon="inline-start" /> La plataforma para crecer sin fricción</div><h1 className="max-w-2xl text-balance text-5xl font-semibold tracking-[-0.04em] sm:text-6xl lg:text-7xl">Convierte cada venta en <span className="text-primary">crecimiento.</span></h1><p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">La suite comercial que une clientes, inventario y canales de venta para que tu equipo pueda vender más, con menos esfuerzo.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button size="lg" className="h-12 bg-primary px-6 text-primary-foreground hover:bg-primary/90" asChild><a href="#contacto">Empieza gratis <ArrowRight data-icon="inline-end" /></a></Button><Button size="lg" variant="outline" className="h-12 border-border px-6" asChild><a href="#producto">Ver cómo funciona</a></Button></div><p className="mt-5 text-xs text-muted-foreground">Sin tarjeta de crédito · Configuración en minutos</p></div>
+        <DashboardMockup />
+      </div></section>
+
+      <section id="soluciones" className="border-y border-border bg-card/40 px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl"><div className="max-w-xl"><p className="mb-3 text-sm font-medium text-primary">MENOS OPERACIÓN. MÁS VISIÓN.</p><h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Tu negocio no debería sentirse como apagar incendios.</h2><p className="mt-4 leading-relaxed text-muted-foreground">AmaxTech elimina el trabajo fragmentado y te devuelve el control de cada decisión importante.</p></div><div className="mt-12 grid gap-5 md:grid-cols-3">{[['01','Datos dispersos','Toda la información de tus ventas vive en lugares distintos.'],['02','Procesos manuales','Tu equipo pierde horas en tareas repetitivas que no generan valor.'],['03','Crecimiento a ciegas','Sin una visión clara, cada decisión se convierte en una apuesta.']].map(([n,t,d]) => <div key={n} className="rounded-2xl border border-border bg-card p-6"><span className="font-mono text-sm text-primary">{n}</span><h3 className="mt-10 text-xl font-medium">{t}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d}</p></div>)}</div></div></section>
+
+      <section id="producto" className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="text-center"><p className="mb-3 text-sm font-medium text-primary">TODO EN UN SOLO LUGAR</p><h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Una operación que trabaja a tu favor.</h2></div><div className="mt-12 grid gap-5 md:grid-cols-2"><Feature icon={<BarChart3 />} title="Decisiones más inteligentes" text="Dashboards claros para entender qué está pasando y actuar antes que tu competencia."/><Feature icon={<Package />} title="Inventario bajo control" text="Evita quiebres de stock y libera capital con una vista en tiempo real de tu catálogo."/><Feature icon={<MessageCircle />} title="Clientes que vuelven" text="Construye relaciones duraderas con conversaciones y seguimiento centralizados."/><Feature icon={<ShieldCheck />} title="Seguridad sin compromisos" text="Tus datos y los de tus clientes protegidos con estándares empresariales."/></div></section>
+
+      <section className="mx-5 rounded-3xl bg-primary px-6 py-14 text-primary-foreground sm:px-12 lg:mx-auto lg:max-w-7xl"><div className="grid items-center gap-8 md:grid-cols-[1fr_auto]"><div><p className="mb-3 text-sm font-medium text-primary-foreground/70">GUÍA GRATUITA</p><h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Los 5 sistemas que toda empresa necesita para escalar.</h2><p className="mt-4 max-w-xl leading-relaxed text-primary-foreground/75">Descarga nuestra guía práctica y descubre cómo construir una operación comercial preparada para crecer.</p></div><form onSubmit={submitLead} className="flex w-full max-w-md flex-col gap-3 sm:flex-row"><input aria-label="Tu email" type="email" required placeholder="tu@email.com" value={email} onChange={e => setEmail(e.target.value)} className="h-11 min-w-0 flex-1 rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-4 text-sm outline-none placeholder:text-primary-foreground/50"/><Button className="h-11 bg-primary-foreground text-primary hover:bg-primary-foreground/90">{sent ? 'Enviado' : 'Descargar guía'}</Button></form></div></section>
+
+      <section id="precios" className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="mb-3 text-sm font-medium text-primary">PRECIOS TRANSPARENTES</p><h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Crece a tu ritmo.</h2></div><div className="flex rounded-lg border border-border p-1 text-sm"><button onClick={() => setCurrency('USD')} className={`rounded-md px-3 py-1.5 ${currency === 'USD' ? 'bg-secondary text-foreground' : 'text-muted-foreground'}`}>USD</button><button onClick={() => setCurrency('EUR')} className={`rounded-md px-3 py-1.5 ${currency === 'EUR' ? 'bg-secondary text-foreground' : 'text-muted-foreground'}`}>EUR</button></div></div><div className="mt-10 grid gap-5 lg:grid-cols-3">{[['Starter','Para equipos que están empezando.','29'],['Growth','Para negocios listos para escalar.','79'],['Scale','Para operaciones de alto rendimiento.','199']].map(([name,desc,price],i) => <div key={name} className={`rounded-2xl border p-7 ${i === 1 ? 'border-primary bg-primary/10' : 'border-border bg-card'}`}>{i === 1 && <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">Más elegido</span>}<h3 className="mt-5 text-xl font-semibold">{name}</h3><p className="mt-2 min-h-12 text-sm text-muted-foreground">{desc}</p><p className="mt-6 text-4xl font-semibold">{currency === 'USD' ? '$' : '€'}{price}<span className="text-sm font-normal text-muted-foreground"> /mes</span></p><Button variant={i === 1 ? 'default' : 'outline'} className="mt-7 w-full" asChild><a href="#contacto">Elegir {name}</a></Button><ul className="mt-7 flex flex-col gap-3 text-sm text-muted-foreground">{['Dashboard comercial','Automatizaciones básicas','Soporte por email'].map(x => <li key={x} className="flex items-center gap-2"><Check className="text-primary" />{x}</li>)}</ul></div>)}</div></section>
+
+      <section id="faq" className="border-t border-border px-5 py-20 lg:px-8"><div className="mx-auto max-w-3xl"><div className="text-center"><p className="mb-3 text-sm font-medium text-primary">PREGUNTAS FRECUENTES</p><h2 className="text-3xl font-semibold tracking-tight">Antes de dar el siguiente paso.</h2></div><div className="mt-10 flex flex-col divide-y divide-border border-y border-border">{faqs.map(([q,a],i) => <div key={q} className="py-5"><button className="flex w-full items-center justify-between text-left font-medium" onClick={() => setFaq(faq === i ? null : i)}>{q}<ChevronDown className={`transition-transform ${faq === i ? 'rotate-180 text-primary' : 'text-muted-foreground'}`} /></button>{faq === i && <p className="mt-3 max-w-2xl pr-8 text-sm leading-relaxed text-muted-foreground">{a}</p>}</div>)}</div></div></section>
+
+      <section id="contacto" className="px-5 pb-20 text-center lg:px-8"><div className="mx-auto max-w-3xl rounded-3xl border border-border bg-card px-6 py-14"><CircleDollarSign className="mx-auto text-primary" /><h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Tu próxima etapa empieza aquí.</h2><p className="mx-auto mt-4 max-w-lg leading-relaxed text-muted-foreground">Deja de improvisar. Dale a tu equipo las herramientas para convertir ambición en resultados.</p><Button size="lg" className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90">Hablar con un experto <ArrowRight data-icon="inline-end" /></Button></div></section>
+      <footer className="border-t border-border px-5 py-7 text-center text-sm text-muted-foreground">© 2026 amaxtech · La infraestructura detrás de tu crecimiento.</footer>
+    </main>
+  )
 }
+
+function Feature({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) { return <article className="group rounded-2xl border border-border bg-card p-7 transition-colors hover:border-primary/50"><div className="grid size-11 place-items-center rounded-xl bg-secondary text-primary">{icon}</div><h3 className="mt-6 text-xl font-medium">{title}</h3><p className="mt-3 leading-relaxed text-muted-foreground">{text}</p></article> }
+function DashboardMockup() { return <div className="relative rounded-2xl border border-border bg-card p-3 shadow-2xl shadow-primary/10"><div className="rounded-xl border border-border bg-background p-4 sm:p-6"><div className="flex items-center justify-between"><div><p className="text-xs text-muted-foreground">Ventas totales</p><p className="mt-1 text-2xl font-semibold">$48,290.00</p></div><span className="rounded-full bg-primary/15 px-2 py-1 text-xs text-primary">+24.8%</span></div><div className="mt-8 flex h-40 items-end gap-2 border-b border-border px-2">{[35,48,42,65,54,72,58,88,76,100,83,96].map((h,i) => <div key={i} style={{ height: `${h}%` }} className={`flex-1 rounded-t-sm ${i > 8 ? 'bg-primary' : 'bg-secondary'}`} />)}</div><div className="mt-5 grid grid-cols-3 gap-3">{[['Pedidos','1,284'],['Conversión','6.8%'],['Ticket medio','$37.60']].map(([a,b]) => <div key={a} className="rounded-lg bg-secondary/60 p-3"><p className="text-[10px] text-muted-foreground">{a}</p><p className="mt-1 text-sm font-medium">{b}</p></div>)}</div></div></div> }
