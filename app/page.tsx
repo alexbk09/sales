@@ -1,66 +1,715 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
-import { ArrowRight, BarChart3, Check, ChevronDown, FileText, BriefcaseBusiness, Mail, Menu, MessageCircle, Moon, Package, ReceiptText, Search, Settings2, ShieldCheck, ShoppingCart, Sparkles, Sun, Users, X, Zap } from 'lucide-react'
-import { Button, buttonVariants } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import {useState} from 'react'
+import {
+    ArrowRight,
+    BarChart3,
+    Check,
+    ChevronDown,
+    FileText,
+    BriefcaseBusiness,
+    Mail,
+    Menu,
+    MessageCircle,
+    Moon,
+    Package,
+    ReceiptText,
+    Search,
+    Settings2,
+    ShieldCheck,
+    ShoppingCart,
+    Sparkles,
+    Sun,
+    Users,
+    X,
+    Zap
+} from 'lucide-react'
+import {Button, buttonVariants} from '@/components/ui/button'
+import {cn} from '@/lib/utils'
 
-const manualUrl = 'https://blobs.vusercontent.net/blob/Manual%20de%20Usuario%20%E2%80%94%20AmaxTech-pEmpTwYGuYN6zjTZJyxin2VZbT1Pvp.pdf'
+const manualUrl = 'https://blobs.vusercontent.net/blob/Manual%20de%20Usuario%20%E2%80%94%20AmaxTe' +
+        'ch-pEmpTwYGuYN6zjTZJyxin2VZbT1Pvp.pdf'
 const faqs = [
-  ['¿Qué incluye AmaxTech?', 'Una tienda digital con catálogo, carrito y solicitudes, además de un panel administrativo para productos, usuarios, precios, cotizaciones, solicitudes y facturación SENIAT.'],
-  ['¿Puedo adaptar la tienda a mi negocio?', 'Sí. Configuras marca, logo, contactos, redes, textos de portada, enlaces de navegación, cotizaciones y datos fiscales desde el panel.'],
-  ['¿El sistema sirve para equipos con varios usuarios?', 'Sí. Incluye roles personalizados y permisos por módulo para que cada persona vea y gestione únicamente lo que necesita.'],
+    [
+        '¿Qué incluye AmaxTech?', 'Una tienda digital con catálogo, carrito y solicitudes, además de un panel adm' +
+                'inistrativo para productos, usuarios, precios, cotizaciones, solicitudes y fac' +
+                'turación.'
+    ],
+    [
+        '¿Puedo adaptar la tienda a mi negocio?', 'Sí. Configuras marca, logo, contactos, redes, textos de portada, enlaces de na' +
+                'vegación, cotizaciones y datos fiscales desde el panel.'
+    ],
+    [
+        '¿El sistema sirve para equipos con varios usuarios?', 'Sí. Incluye roles personalizados y permisos por módulo para que cada persona v' +
+                'ea y gestione únicamente lo que necesita.'
+    ]
 ]
 const segments = [
-  { icon: ShoppingCart, title: 'Tienda y catálogo', text: 'Una experiencia pública para descubrir productos, filtrar por categoría o marca, consultar fichas y armar un carrito.' },
-  { icon: Users, title: 'Clientes y solicitudes', text: 'Cada cliente tiene su espacio, historial y seguimiento. Confirma por WhatsApp y recibe un ID único de solicitud.' },
-  { icon: BarChart3, title: 'Panel de control', text: 'KPIs, ventas, tasas, inventario y productos más vendidos para decidir con información real.' },
-  { icon: Package, title: 'Productos e inventario', text: 'Gestiona fotos, variantes, stock, costos, categorías, marcas, proveedores e importaciones por Excel.' },
-  { icon: ReceiptText, title: 'Cotizaciones y facturación', text: 'Crea cotizaciones profesionales, conviértelas en solicitudes y emite facturas electrónicas con datos SENIAT.' },
-  { icon: Settings2, title: 'Precios y configuración', text: 'Calcula el impacto de la tasa, aplica aumentos masivos con simulación y personaliza toda la tienda.' },
+    {
+        icon: ShoppingCart,
+        title: 'Tienda y catálogo',
+        text: 'Una experiencia pública para descubrir productos, filtrar por categoría o marc' +
+                'a, consultar fichas y armar un carrito.'
+    }, {
+        icon: Users,
+        title: 'Clientes y solicitudes',
+        text: 'Cada cliente tiene su espacio, historial y seguimiento. Confirma por WhatsApp ' +
+                'y recibe un ID único de solicitud.'
+    }, {
+        icon: BarChart3,
+        title: 'Panel de control',
+        text: 'KPIs, ventas, tasas, inventario y productos más vendidos para decidir con info' +
+                'rmación real.'
+    }, {
+        icon: Package,
+        title: 'Productos e inventario',
+        text: 'Gestiona fotos, variantes, stock, costos, categorías, marcas, proveedores e im' +
+                'portaciones por Excel.'
+    }, {
+        icon: ReceiptText,
+        title: 'Cotizaciones y facturación',
+        text: 'Crea cotizaciones profesionales, conviértelas en solicitudes y emite facturas ' +
+                'electrónicas con datos.'
+    }, {
+        icon: Settings2,
+        title: 'Precios y configuración',
+        text: 'Calcula el impacto de la tasa, aplica aumentos masivos con simulación y person' +
+                'aliza toda la tienda.'
+    }
 ]
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [dark, setDark] = useState(true)
-  const [faq, setFaq] = useState<number | null>(0)
-  const [email, setEmail] = useState('')
-  const [sent, setSent] = useState(false)
-  const toggleTheme = () => { setDark(!dark); document.documentElement.classList.toggle('light', dark) }
-  const submitLead = (e: React.FormEvent) => { e.preventDefault(); if (email) setSent(true) }
+    const [menuOpen, setMenuOpen] = useState(false)
+    const [dark, setDark] = useState(true)
+    const [faq, setFaq] = useState < number | null > (0)
+    const [email, setEmail] = useState('')
+    const [sent, setSent] = useState(false)
+    const toggleTheme = () => {
+        setDark(!dark);
+        document
+            .documentElement
+            .classList
+            .toggle('light', dark)
+    }
+    const submitLead = (e : React.FormEvent) => {
+        e.preventDefault();
+        if (email) 
+            setSent(true)
+    }
 
-  return <main className="min-h-screen overflow-hidden bg-background text-foreground">
-    <header className="sticky top-0 z-30 border-b border-border/70 bg-background/90 backdrop-blur-xl"><div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-      <a href="#inicio" className="flex items-center gap-2 font-bold tracking-tight"><span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Zap /></span><span className="text-xl">amax<span className="text-primary">tech</span></span></a>
-      <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex"><a href="#producto">Plataforma</a><a href="#segmentos">Módulos</a><a href="#manual">Manual</a><a href="#precios">Planes</a></nav>
-      <div className="hidden items-center gap-3 md:flex"><Button variant="ghost" onClick={toggleTheme} aria-label="Cambiar modo">{dark ? <Sun data-icon="inline-start" /> : <Moon data-icon="inline-start" />}{dark ? 'Modo claro' : 'Modo oscuro'}</Button><Button asChild><a href="#contacto">Solicitar demo <ArrowRight data-icon="inline-end" /></a></Button></div>
-      <button aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
-    </div>{menuOpen && <nav className="flex flex-col gap-4 border-t border-border px-5 py-5 text-sm md:hidden"><a href="#producto" onClick={() => setMenuOpen(false)}>Plataforma</a><a href="#segmentos" onClick={() => setMenuOpen(false)}>Módulos</a><a href="#manual" onClick={() => setMenuOpen(false)}>Manual</a><a href="#precios" onClick={() => setMenuOpen(false)}>Planes</a><Button asChild><a href="#contacto">Solicitar demo</a></Button></nav>}</header>
+    return <main className="min-h-screen overflow-hidden bg-background text-foreground">
+        <header
+            className="sticky top-0 z-30 border-b border-border/70 bg-background/90 backdrop-blur-xl">
+            <div
+                className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+                <a href="#inicio" className="flex items-center gap-2 font-bold tracking-tight">
+                    <span
+                        className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Zap/></span>
+                    <span className="text-xl">amax<span className="text-primary">tech</span>
+                    </span>
+                </a>
+                <nav
+                    className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
+                    <a href="#producto">Plataforma</a>
+                    <a href="#segmentos">Módulos</a>
+                    <a href="#manual">Manual</a>
+                    <a href="#precios">Planes</a>
+                </nav>
+                <div className="hidden items-center gap-3 md:flex">
+                    <Button variant="ghost" onClick={toggleTheme} aria-label="Cambiar modo">{
+                            dark
+                                ? <Sun data-icon="inline-start"/>
+                                : <Moon data-icon="inline-start"/>
+                        }{
+                            dark
+                                ? 'Modo claro'
+                                : 'Modo oscuro'
+                        }</Button>
+                    <Button asChild="asChild">
+                        <a href="#contacto">Solicitar demo
+                            <ArrowRight data-icon="inline-end"/></a>
+                    </Button>
+                </div>
+                <button
+                    aria-label={menuOpen
+                        ? 'Cerrar menú'
+                        : 'Abrir menú'}
+                    className="md:hidden"
+                    onClick={() => setMenuOpen(!menuOpen)}>{
+                        menuOpen
+                            ? <X/>
+                            : <Menu/>
+                    }</button>
+            </div>{
+                menuOpen && <nav
+                        className="flex flex-col gap-4 border-t border-border px-5 py-5 text-sm md:hidden">
+                        <a href="#producto" onClick={() => setMenuOpen(false)}>Plataforma</a>
+                        <a href="#segmentos" onClick={() => setMenuOpen(false)}>Módulos</a>
+                        <a href="#manual" onClick={() => setMenuOpen(false)}>Manual</a>
+                        <a href="#precios" onClick={() => setMenuOpen(false)}>Planes</a>
+                        <Button asChild="asChild">
+                            <a href="#contacto">Solicitar demo</a>
+                        </Button>
+                    </nav>
+            }</header>
 
-    <section id="inicio" className="mx-auto max-w-7xl px-5 pb-20 pt-20 lg:px-8 lg:pb-28 lg:pt-28"><div className="grid items-center gap-14 lg:grid-cols-[1fr_0.95fr]"><div><div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"><Sparkles data-icon="inline-start" /> Software comercial listo para vender</div><h1 className="max-w-2xl text-balance text-5xl font-semibold tracking-[-0.05em] sm:text-6xl lg:text-7xl">Tu tienda. Tu operación. <span className="text-primary">Todo conectado.</span></h1><p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">AmaxTech es la plataforma que convierte un catálogo en un negocio completo: vende, administra y factura desde un solo lugar.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button size="lg" asChild><a href="#contacto">Quiero ver AmaxTech <ArrowRight data-icon="inline-end" /></a></Button><Button size="lg" variant="outline" asChild><a href="#segmentos">Explorar módulos</a></Button></div><p className="mt-5 text-xs text-muted-foreground">Diseñada para iluminación, revestimientos y negocios con catálogo físico.</p></div><DashboardMockup /></div></section>
+        <section
+            id="inicio"
+            className="mx-auto max-w-7xl px-5 pb-20 pt-20 lg:px-8 lg:pb-28 lg:pt-28">
+            <div className="grid items-center gap-14 lg:grid-cols-[1fr_0.95fr]">
+                <div>
+                    <div
+                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"><Sparkles data-icon="inline-start"/>
+                        Software comercial listo para vender</div>
+                    <h1
+                        className="max-w-2xl text-balance text-5xl font-semibold tracking-[-0.05em] sm:text-6xl lg:text-7xl">Tu tienda. Tu operación.
+                        <span className="text-primary">Todo conectado.</span>
+                    </h1>
+                    <p
+                        className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">AmaxTech
+                        es la plataforma que convierte un catálogo en un negocio completo: vende,
+                        administra y factura desde un solo lugar.</p>
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <Button size="lg" asChild="asChild">
+                            <a href="#contacto">Quiero ver AmaxTech
+                                <ArrowRight data-icon="inline-end"/></a>
+                        </Button>
+                        <Button size="lg" variant="outline" asChild="asChild">
+                            <a href="#segmentos">Explorar módulos</a>
+                        </Button>
+                    </div>
+                    <p className="mt-5 text-xs text-muted-foreground">Diseñada para iluminación, revestimientos y negocios con catálogo físico.</p>
+                </div><DashboardMockup/></div>
+        </section>
 
-    <section id="showcase" className="border-y border-border bg-card/40 px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div className="max-w-2xl"><p className="mb-3 text-sm font-medium text-primary">MÍRALO EN ACCIÓN</p><h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">Una experiencia que se entiende en segundos.</h2><p className="mt-4 text-pretty leading-relaxed text-muted-foreground">No vendas una promesa. Enseña la vitrina, la operación y el control que tus clientes tendrán desde el primer día.</p></div><a href="#contacto" className={cn(buttonVariants({ variant: 'outline' }), 'shrink-0')}>Agendar recorrido <ArrowRight data-icon="inline-end" /></a></div><div className="mt-12 grid gap-6 lg:grid-cols-[1.35fr_0.65fr]"><ShowcaseImage src="/mockups/catalogo-amaxtech.png" label="La tienda que ve tu cliente" title="Catálogo que convierte visitas en solicitudes" className="lg:row-span-2" /><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1"><ShowcaseImage src="/mockups/modal-producto-amaxtech.png" label="Detalle de producto" title="Cada ficha responde antes de que pregunten" /><ShowcaseImage src="/mockups/dashboard-amaxtech.png" label="Centro de control" title="Toda tu operación, en una sola pantalla" /></div></div><div className="mt-10 grid gap-4 border-t border-border pt-8 sm:grid-cols-3"><div><p className="text-lg font-semibold">Vende sin fricción</p><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Productos claros, precios visibles y solicitudes listas para atender.</p></div><div><p className="text-lg font-semibold">Opera con control</p><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Tu equipo trabaja con la misma información y menos errores.</p></div><div><p className="text-lg font-semibold">Cierra con confianza</p><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Cotiza, confirma y factura con una experiencia profesional.</p></div></div></div></section>
+        <section
+            id="showcase"
+            className="border-y border-border bg-card/40 px-5 py-20 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+                <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                    <div className="max-w-2xl">
+                        <p className="mb-3 text-sm font-medium text-primary">MÍRALO EN ACCIÓN</p>
+                        <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">Una experiencia que se entiende en segundos.</h2>
+                        <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">No vendas
+                            una promesa. Enseña la vitrina, la operación y el control que tus clientes
+                            tendrán desde el primer día.</p>
+                    </div>
+                    <a
+                        href="#contacto"
+                        className={cn(buttonVariants({variant: 'outline'}), 'shrink-0')}>Agendar recorrido
+                        <ArrowRight data-icon="inline-end"/></a>
+                </div>
+                <div className="mt-12 grid gap-6 lg:grid-cols-[1.35fr_0.65fr]"><ShowcaseImage
+                    src="/mockups/catalogo-amaxtech.png"
+                    label="La tienda que ve tu cliente"
+                    title="Catálogo que convierte visitas en solicitudes"
+                    className="lg:row-span-2"/>
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1"><ShowcaseImage
+                        src="/mockups/modal-producto-amaxtech.png"
+                        label="Detalle de producto"
+                        title="Cada ficha responde antes de que pregunten"/><ShowcaseImage
+                        src="/mockups/dashboard-amaxtech.png"
+                        label="Centro de control"
+                        title="Toda tu operación, en una sola pantalla"/></div>
+                </div>
+                <div className="mt-10 grid gap-4 border-t border-border pt-8 sm:grid-cols-3">
+                    <div>
+                        <p className="text-lg font-semibold">Vende sin fricción</p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Productos claros, precios visibles y solicitudes listas para atender.</p>
+                    </div>
+                    <div>
+                        <p className="text-lg font-semibold">Opera con control</p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Tu equipo trabaja con la misma información y menos errores.</p>
+                    </div>
+                    <div>
+                        <p className="text-lg font-semibold">Cierra con confianza</p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Cotiza, confirma y factura con una experiencia profesional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="producto" className="border-y border-border bg-card/40 px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl"><div className="max-w-2xl"><p className="mb-3 text-sm font-medium text-primary">EL FUERTE DE AMAXTECH</p><h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">No es solo una tienda online. Es el sistema operativo de tu negocio.</h2><p className="mt-4 leading-relaxed text-muted-foreground">Conecta la vitrina que ve tu cliente con las decisiones que toma tu equipo. Menos herramientas separadas, menos errores y más control del ciclo completo.</p></div><div className="mt-10 grid gap-5 md:grid-cols-3"><Value title="Vende" text="Catálogo con búsqueda, filtros, variantes, precios en USD y Bs, carrito y confirmación por WhatsApp." icon={ShoppingCart} /><Value title="Administra" text="Productos, stock, usuarios, roles, proveedores y solicitudes en un panel diseñado para operar." icon={ShieldCheck} /><Value title="Crece" text="Tasas, cotizaciones, facturación SENIAT y métricas para tomar decisiones rentables." icon={BarChart3} /></div></div></section>
+        <section
+            id="producto"
+            className="border-y border-border bg-card/40 px-5 py-20 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+                <div className="max-w-2xl">
+                    <p className="mb-3 text-sm font-medium text-primary">EL FUERTE DE AMAXTECH</p>
+                    <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">No es solo una tienda online. Es el sistema operativo de tu negocio.</h2>
+                    <p className="mt-4 leading-relaxed text-muted-foreground">Conecta la vitrina que
+                        ve tu cliente con las decisiones que toma tu equipo. Menos herramientas
+                        separadas, menos errores y más control del ciclo completo.</p>
+                </div>
+                <div className="mt-10 grid gap-5 md:grid-cols-3"><Value
+                    title="Vende"
+                    text="Catálogo con búsqueda, filtros, variantes, precios en USD y Bs, carrito y confirmación por WhatsApp."
+                    icon={ShoppingCart}/><Value
+                    title="Administra"
+                    text="Productos, stock, usuarios, roles, proveedores y solicitudes en un panel diseñado para operar."
+                    icon={ShieldCheck}/><Value
+                    title="Crece"
+                    text="Tasas, cotizaciones, facturación y métricas para tomar decisiones rentables."
+                    icon={BarChart3}/></div>
+            </div>
+        </section>
 
-    <section id="segmentos" className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="text-center"><p className="mb-3 text-sm font-medium text-primary">UNA PLATAFORMA, SEIS ÁREAS CLAVE</p><h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Todo lo que tu equipo necesita para operar.</h2></div><div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">{segments.map(({ icon: Icon, title, text }) => <article key={title} className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/60"><div className="grid size-11 place-items-center rounded-xl bg-secondary text-primary"><Icon /></div><h3 className="mt-6 text-lg font-semibold">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}</div></section>
+        <section id="segmentos" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <div className="text-center">
+                <p className="mb-3 text-sm font-medium text-primary">UNA PLATAFORMA, SEIS ÁREAS CLAVE</p>
+                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Todo lo que tu equipo necesita para operar.</h2>
+            </div>
+            <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">{
+                    segments.map(
+                        ({icon: Icon, title, text}) => <article
+                            key={title}
+                            className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/60">
+                            <div
+                                className="grid size-11 place-items-center rounded-xl bg-secondary text-primary"><Icon/></div>
+                            <h3 className="mt-6 text-lg font-semibold">{title}</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p>
+                        </article>
+                    )
+                }</div>
+        </section>
 
-    <section id="manual" className="mx-5 rounded-3xl border border-accent/30 bg-accent/10 px-6 py-12 lg:mx-auto lg:max-w-7xl lg:px-12"><div className="grid items-center gap-10 lg:grid-cols-[1fr_0.8fr]"><div><div className="mb-5 grid size-12 place-items-center rounded-xl bg-accent text-accent-foreground"><FileText /></div><p className="mb-3 text-sm font-medium text-accent">MANUAL DE USUARIO</p><h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Enséñale a tu cliente todo lo que puede hacer.</h2><p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">Presenta AmaxTech con claridad: desde explorar el catálogo y generar una solicitud, hasta administrar roles, precios, cotizaciones y facturas SENIAT.</p><Button className="mt-7" variant="outline" asChild><a href={manualUrl} target="_blank" rel="noreferrer">Abrir manual completo <ArrowRight data-icon="inline-end" /></a></Button></div><div className="overflow-hidden rounded-2xl border border-border bg-background"><div className="flex items-center justify-between border-b border-border px-4 py-3 text-sm"><span className="font-medium">Guía rápida del sistema</span><FileText className="text-accent" /></div><div className="grid gap-3 p-5 text-sm">{['Catálogo, carrito y solicitudes','Panel administrativo y KPIs','Usuarios, roles y permisos','Cotizaciones y facturación SENIAT','Ajuste masivo de precios'].map((item, i) => <div key={item} className="flex items-center gap-3 rounded-lg bg-card p-3"><span className="font-mono text-xs text-accent">0{i + 1}</span><span>{item}</span></div>)}</div></div></div></section>
+        <section
+            id="manual"
+            className="mx-5 rounded-3xl border border-accent/30 bg-accent/10 px-6 py-12 lg:mx-auto lg:max-w-7xl lg:px-12">
+            <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
+                <div>
+                    <div
+                        className="mb-5 grid size-12 place-items-center rounded-xl bg-accent text-accent-foreground"><FileText/></div>
+                    <p className="mb-3 text-sm font-medium text-accent">MANUAL DE USUARIO</p>
+                    <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Enséñale a tu cliente todo lo que puede hacer.</h2>
+                    <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">Presenta
+                        AmaxTech con claridad: desde explorar el catálogo y generar una solicitud, hasta
+                        administrar roles, precios, cotizaciones y facturas.</p>
+                    <Button className="mt-7" variant="outline" asChild="asChild">
+                        <a href={manualUrl} target="_blank" rel="noreferrer">Abrir manual completo
+                            <ArrowRight data-icon="inline-end"/></a>
+                    </Button>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-border bg-background">
+                    <div
+                        className="flex items-center justify-between border-b border-border px-4 py-3 text-sm">
+                        <span className="font-medium">Guía rápida del sistema</span><FileText className="text-accent"/></div>
+                    <div className="grid gap-3 p-5 text-sm">{
+                            ['Catálogo, carrito y solicitudes', 'Panel administrativo y KPIs', 'Usuarios, roles y permisos', 'Cotizaciones y facturación', 'Ajuste masivo de precios'].map(
+                                (item, i) => <div key={item} className="flex items-center gap-3 rounded-lg bg-card p-3">
+                                    <span className="font-mono text-xs text-accent">0{i + 1}</span>
+                                    <span>{item}</span>
+                                </div>
+                            )
+                        }</div>
+                </div>
+            </div>
+        </section>
 
-    <section id="precios" className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="mb-3 text-sm font-medium text-primary">UNA INVERSIÓN CON RETORNO</p><h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Elige cómo empezar.</h2></div><p className="max-w-sm text-sm leading-relaxed text-muted-foreground">Conoce el sistema, personalízalo para tu operación y ofrece a tus clientes una experiencia profesional.</p></div><div className="mt-10 grid gap-5 lg:grid-cols-3">{[['Esencial','Catálogo + solicitudes','Para comenzar a vender con una tienda propia.'],['Profesional','Operación completa','Para equipos que necesitan administrar y medir.'],['Enterprise','Sistema a tu medida','Para negocios que quieren escalar con control.']].map(([name,tag,desc], i) => <div key={name} className={`rounded-2xl border p-7 ${i === 1 ? 'border-primary bg-primary/10' : 'border-border bg-card'}`}>{i === 1 && <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">Más completo</span>}<h3 className="mt-5 text-xl font-semibold">{name}</h3><p className="mt-2 text-primary">{tag}</p><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p><Button className="mt-7 w-full" variant={i === 1 ? 'default' : 'outline'} asChild><a href="#contacto">Solicitar propuesta</a></Button><ul className="mt-7 flex flex-col gap-3 text-sm text-muted-foreground">{['Tienda responsive','Panel administrativo','Soporte de implementación'].map(x => <li key={x} className="flex items-center gap-2"><Check className="text-primary" />{x}</li>)}</ul></div>)}</div></section>
+        <section id="precios" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+                <div>
+                    <p className="mb-3 text-sm font-medium text-primary">UNA INVERSIÓN CON RETORNO</p>
+                    <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Elige cómo empezar.</h2>
+                </div>
+                <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">Conoce el
+                    sistema, personalízalo para tu operación y ofrece a tus clientes una experiencia
+                    profesional.</p>
+            </div>
+            <div className="mt-10 grid gap-5 lg:grid-cols-3">{
+                    [
+                        [
+                            'Esencial', 'Catálogo + solicitudes', 'Para comenzar a vender con una tienda propia.'
+                        ],
+                        [
+                            'Profesional', 'Operación completa', 'Para equipos que necesitan administrar y medir.'
+                        ],
+                        [
+                            'Enterprise', 'Sistema a tu medida', 'Para negocios que quieren escalar con control.'
+                        ]
+                    ].map(
+                        ([
+                            name, tag, desc
+                        ], i) => <div
+                            key={name}
+                            className={`rounded-2xl border p-7 ${i === 1
+                                ? 'border-primary bg-primary/10'
+                                : 'border-border bg-card'}`}>{
+                                i === 1 && <span
+                                        className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">Más completo</span>
+                            }<h3 className="mt-5 text-xl font-semibold">{name}</h3>
+                            <p className="mt-2 text-primary">{tag}</p>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+                            <Button
+                                className="mt-7 w-full"
+                                variant={i === 1
+                                    ? 'default'
+                                    : 'outline'}
+                                asChild="asChild">
+                                <a href="#contacto">Solicitar propuesta</a>
+                            </Button>
+                            <ul className="mt-7 flex flex-col gap-3 text-sm text-muted-foreground">{
+                                    ['Tienda responsive', 'Panel administrativo', 'Soporte de implementación'].map(
+                                        x => <li key={x} className="flex items-center gap-2"><Check className="text-primary"/>{x}</li>
+                                    )
+                                }</ul>
+                        </div>
+                    )
+                }</div>
+        </section>
 
-    <section id="modelo" className="border-y border-border bg-card/40 px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl"><div className="max-w-3xl"><p className="mb-3 text-sm font-medium text-primary">POR QUÉ AMAXTECH</p><h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">La ventaja que tu cliente puede entender y medir.</h2><p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">No compitas por ser otra tienda. Presenta una operación web moderna que protege el margen, ordena las ventas y le da a cada equipo una forma más inteligente de trabajar.</p></div><div className="mt-12 grid gap-4 md:grid-cols-3"><Strength icon={Zap} title="100% web, cero instalaciones" text="Arquitectura React + Supabase: sin equipos lentos ni servidores locales. Respaldos diarios en la nube y analítica en tiempo real desde teléfono, tablet o PC." /><Strength icon={ShieldCheck} title="Exchange Rate Shield" text="Precios en Bs./USD conectados a tasas diarias. Actualiza todo el inventario al instante y protege tus márgenes frente a la devaluación." /><Strength icon={MessageCircle} title="Corporate WhatsApp Engine" text="El carrito genera solicitudes estructuradas con Tracking ID único, para estandarizar el embudo comercial y dar seguimiento sin perder conversaciones." /></div><div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]"><div><p className="mb-3 text-sm font-medium text-primary">MODALIDAD ALQUILER MENSUAL · SAAS</p><h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">Empieza con el plan que acompaña tu crecimiento.</h3><div className="mt-7 grid gap-4 md:grid-cols-3"><PriceCard name="Plan Emprendedor" price="$29" detail="/mes" features={['Hasta 500 productos','1 catálogo digital','Variantes de peso y color','WhatsApp básico']} /><PriceCard name="Plan Comercio Pro" price="$59" detail="/mes" popular features={['Productos ilimitados','Sincronización USD / Bs','Smart Cart con Tracking ID','Generador de cotizaciones','Soporte técnico prioritario']} /><PriceCard name="Plan Corporativo SENIAT" price="$119" detail="/mes" features={['Todas las funciones Pro','Módulo de facturación SENIAT','Roles y permisos ilimitados','Importador masivo Excel']} /></div></div><div className="flex flex-col justify-between rounded-3xl border border-accent/50 bg-accent/10 p-7 lg:p-9"><div><p className="text-sm font-medium text-accent">MODALIDAD LICENCIA ÚNICA</p><h3 className="mt-3 text-2xl font-semibold tracking-tight">Adquiere el sistema de por vida para tu infraestructura.</h3><p className="mt-6 font-mono text-4xl font-semibold text-accent">$1,200 <span className="font-sans text-base font-medium text-muted-foreground">USD · pago único</span></p><p className="mt-6 text-sm leading-relaxed text-muted-foreground">Incluye una cuota obligatoria de <span className="font-semibold text-foreground">$29 USD mensuales</span> por mantenimiento y soporte cloud. Tu base de datos Supabase dedicada, hosting de alta velocidad, respaldos diarios y actualizaciones técnicas operan sin interrupciones, 24/7.</p></div><Button className="mt-8 w-full" variant="outline" asChild><a href="#contacto">Solicitar propuesta de licencia <ArrowRight data-icon="inline-end" /></a></Button></div></div><div className="mt-10 flex flex-col items-start justify-between gap-5 rounded-2xl border border-primary/30 bg-primary/10 p-6 sm:flex-row sm:items-center sm:p-8"><div><p className="text-xl font-semibold">¿No sabes cuál esquema elegir?</p><p className="mt-2 text-sm text-muted-foreground">Conversa con un asesor de implementación y encuentra la ruta correcta para tu negocio.</p></div><Button size="lg" asChild><a href="https://wa.me/584122649707?text=Hola%2C%20quiero%20saber%20qu%C3%A9%20esquema%20de%20AmaxTech%20me%20conviene" target="_blank" rel="noreferrer"><MessageCircle data-icon="inline-start" />Consultar con un Especialista</a></Button></div></div></section>
+        <section
+            id="modelo"
+            className="border-y border-border bg-card/40 px-5 py-20 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+                <div className="max-w-3xl">
+                    <p className="mb-3 text-sm font-medium text-primary">POR QUÉ AMAXTECH</p>
+                    <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">La ventaja que tu cliente puede entender y medir.</h2>
+                    <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">No compitas
+                        por ser otra tienda. Presenta una operación web moderna que protege el margen,
+                        ordena las ventas y le da a cada equipo una forma más inteligente de trabajar.</p>
+                </div>
+                <div className="mt-12 grid gap-4 md:grid-cols-3"><Strength
+                    icon={Zap}
+                    title="100% web, cero instalaciones"
+                    text="Arquitectura React + Supabase: sin equipos lentos ni servidores locales. Respaldos diarios en la nube y analítica en tiempo real desde teléfono, tablet o PC."/><Strength
+                    icon={ShieldCheck}
+                    title="Exchange Rate Shield"
+                    text="Precios en Bs./USD conectados a tasas diarias. Actualiza todo el inventario al instante y protege tus márgenes frente a la devaluación."/><Strength
+                    icon={MessageCircle}
+                    title="Corporate WhatsApp Engine"
+                    text="El carrito genera solicitudes estructuradas con Tracking ID único, para estandarizar el embudo comercial y dar seguimiento sin perder conversaciones."/></div>
+                <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div>
+                        <p className="mb-3 text-sm font-medium text-primary">MODALIDAD ALQUILER MENSUAL · SAAS</p>
+                        <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">Empieza con el plan que acompaña tu crecimiento.</h3>
+                        <div className="mt-7 grid gap-4 md:grid-cols-3"><PriceCard
+                            name="Plan Emprendedor"
+                            price="$80"
+                            detail="/mes"
+                            features={['Hasta 50 productos', '1 catálogo digital', 'Variantes de peso y color', 'WhatsApp básico']}/><PriceCard
+                            name="Plan Comercio Pro"
+                            price="$110"
+                            detail="/mes"
+                            popular="popular"
+                            features={['Productos ilimitados', 'Sincronización USD / Bs', 'Smart Cart con Tracking ID', 'Generador de cotizaciones', 'Soporte técnico prioritario']}/><PriceCard
+                            name="Plan Corporativo Full"
+                            price="$150"
+                            detail="/mes"
+                            features={['Todas las funciones Pro', 'Módulo de facturación', 'Roles y permisos ilimitados', 'Importador masivo Excel']}/></div>
+                    </div>
+                    <div
+                        className="flex flex-col justify-between rounded-3xl border border-accent/50 bg-accent/10 p-7 lg:p-9">
+                        <div>
+                            <p className="text-sm font-medium text-accent">MODALIDAD LICENCIA ÚNICA</p>
+                            <h3 className="mt-3 text-2xl font-semibold tracking-tight">Adquiere el sistema de por vida para tu infraestructura.</h3>
+                            <p className="mt-6 font-mono text-4xl font-semibold text-accent">$850
+                                <span className="font-sans text-base font-medium text-muted-foreground">USD · pago único</span>
+                            </p>
+                            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">Incluye una cuota obligatoria de
+                                <span className="font-semibold text-foreground">$29 USD mensuales</span>
+                                por mantenimiento y soporte cloud. Tu base de datos Supabase dedicada, hosting
+                                de alta velocidad, respaldos diarios y actualizaciones técnicas operan sin
+                                interrupciones, 24/7.</p>
+                        </div>
+                        <Button className="mt-8 w-full" variant="outline" asChild="asChild">
+                            <a href="#contacto">Solicitar propuesta de licencia
+                                <ArrowRight data-icon="inline-end"/></a>
+                        </Button>
+                    </div>
+                </div>
+                <div
+                    className="mt-10 flex flex-col items-start justify-between gap-5 rounded-2xl border border-primary/30 bg-primary/10 p-6 sm:flex-row sm:items-center sm:p-8">
+                    <div>
+                        <p className="text-xl font-semibold">¿No sabes cuál esquema elegir?</p>
+                        <p className="mt-2 text-sm text-muted-foreground">Conversa con un asesor de
+                            implementación y encuentra la ruta correcta para tu negocio.</p>
+                    </div>
+                    <Button size="lg" asChild="asChild">
+                        <a
+                            href="https://wa.me/584122649707?text=Hola%2C%20quiero%20saber%20qu%C3%A9%20esquema%20de%20AmaxTech%20me%20conviene"
+                            target="_blank"
+                            rel="noreferrer"><MessageCircle data-icon="inline-start"/>Consultar con un Especialista</a>
+                    </Button>
+                </div>
+            </div>
+        </section>
 
-    <section id="faq" className="border-t border-border px-5 py-20 lg:px-8"><div className="mx-auto max-w-3xl"><div className="text-center"><p className="mb-3 text-sm font-medium text-primary">PREGUNTAS FRECUENTES</p><h2 className="text-3xl font-semibold tracking-tight">La información que tu cliente necesita.</h2></div><div className="mt-10 flex flex-col divide-y divide-border border-y border-border">{faqs.map(([q,a], i) => <div key={q} className="py-5"><button className="flex w-full items-center justify-between text-left font-medium" onClick={() => setFaq(faq === i ? null : i)}>{q}<ChevronDown className={`transition-transform ${faq === i ? 'rotate-180 text-primary' : 'text-muted-foreground'}`} /></button>{faq === i && <p className="mt-3 max-w-2xl pr-8 text-sm leading-relaxed text-muted-foreground">{a}</p>}</div>)}</div></div></section>
+        <section id="faq" className="border-t border-border px-5 py-20 lg:px-8">
+            <div className="mx-auto max-w-3xl">
+                <div className="text-center">
+                    <p className="mb-3 text-sm font-medium text-primary">PREGUNTAS FRECUENTES</p>
+                    <h2 className="text-3xl font-semibold tracking-tight">La información que tu cliente necesita.</h2>
+                </div>
+                <div
+                    className="mt-10 flex flex-col divide-y divide-border border-y border-border">{
+                        faqs.map(
+                            ([
+                                q, a
+                            ], i) => <div key={q} className="py-5">
+                                <button
+                                    className="flex w-full items-center justify-between text-left font-medium"
+                                    onClick={() => setFaq(
+                                        faq === i
+                                            ? null
+                                            : i
+                                    )}>{q}<ChevronDown
+                                    className={`transition-transform ${faq === i
+                                    ? 'rotate-180 text-primary'
+                                    : 'text-muted-foreground'}`}/></button>{
+                                    faq === i && <p
+                                            className="mt-3 max-w-2xl pr-8 text-sm leading-relaxed text-muted-foreground">{a}</p>
+                                }</div>
+                        )
+                    }</div>
+            </div>
+        </section>
 
-    <section id="contacto" className="px-5 pb-20 lg:px-8"><div className="mx-auto max-w-5xl rounded-3xl bg-primary px-6 py-14 text-primary-foreground sm:px-12"><div className="grid items-center gap-8 md:grid-cols-[1fr_auto]"><div><p className="mb-3 text-sm font-medium text-primary-foreground/70">CONVIERTE TU OPERACIÓN EN UNA VENTAJA</p><h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Haz que tu negocio se vea tan profesional como realmente es.</h2><p className="mt-4 max-w-xl leading-relaxed text-primary-foreground/75">Solicita una demostración y descubre cómo AmaxTech puede convertirse en la plataforma que ofreces a tus clientes.</p></div><form onSubmit={submitLead} className="flex w-full max-w-md flex-col gap-3 sm:flex-row"><input aria-label="Tu email" type="email" required placeholder="tu@email.com" value={email} onChange={e => setEmail(e.target.value)} className="h-11 min-w-0 flex-1 rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-4 text-sm outline-none placeholder:text-primary-foreground/50" /><Button className="h-11 bg-primary-foreground text-primary hover:bg-primary-foreground/90">{sent ? 'Solicitud enviada' : 'Solicitar demo'}</Button></form></div></div></section>
-    <footer className="border-t border-border bg-card/40 px-5 py-12 lg:px-8"><div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-8"><div><a href="#inicio" className="flex items-center gap-2 font-bold tracking-tight"><span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Zap /></span><span className="text-xl">amax<span className="text-primary">tech</span></span></a><p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">La plataforma comercial para vender, administrar y crecer con control.</p></div><div><p className="text-sm font-semibold">Producto</p><div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground"><a href="#showcase">Ver plataforma</a><a href="#segmentos">Módulos</a><a href={manualUrl} target="_blank" rel="noreferrer">Manual de usuario</a></div></div><div><p className="text-sm font-semibold">Empresa</p><div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground"><a href="#precios">Planes y propuesta</a><a href="#faq">Preguntas frecuentes</a><a href="#contacto">Solicitar demostración</a></div></div><div><p className="text-sm font-semibold">Conversemos</p><div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground"><a className="flex items-center gap-2 hover:text-foreground" href="mailto:ventas@amaxtech.com"><Mail /> ventas@amaxtech.com</a><a className="flex items-center gap-2 hover:text-foreground" href="https://www.linkedin.com/company/amaxtech" target="_blank" rel="noreferrer"><BriefcaseBusiness /> LinkedIn</a><a className="flex items-center gap-2 hover:text-foreground" href="https://wa.me/584122649707" target="_blank" rel="noreferrer"><MessageCircle /> WhatsApp comercial</a></div></div></div><div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><p>© 2026 AmaxTech. Todos los derechos reservados.</p><p>Catálogo, ventas y gestión administrativa.</p></div></footer><a href="https://wa.me/584122649707?text=Hola%20AmaxTech%2C%20quiero%20conocer%20la%20plataforma" target="_blank" rel="noreferrer" aria-label="Contactar a AmaxTech por WhatsApp" className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:scale-105"><MessageCircle /></a>
-  </main>
+        <section id="contacto" className="px-5 pb-20 lg:px-8">
+            <div
+                className="mx-auto max-w-5xl rounded-3xl bg-primary px-6 py-14 text-primary-foreground sm:px-12">
+                <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+                    <div>
+                        <p className="mb-3 text-sm font-medium text-primary-foreground/70">CONVIERTE TU OPERACIÓN EN UNA VENTAJA</p>
+                        <h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Haz que tu negocio se vea tan profesional como realmente es.</h2>
+                        <p className="mt-4 max-w-xl leading-relaxed text-primary-foreground/75">Solicita
+                            una demostración y descubre cómo AmaxTech puede convertirse en la plataforma que
+                            ofreces a tus clientes.</p>
+                    </div>
+                    <form
+                        onSubmit={submitLead}
+                        className="flex w-full max-w-md flex-col gap-3 sm:flex-row"><input
+                        aria-label="Tu email"
+                        type="email"
+                        required="required"
+                        placeholder="tu@email.com"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        className="h-11 min-w-0 flex-1 rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-4 text-sm outline-none placeholder:text-primary-foreground/50"/>
+                        <Button
+                            className="h-11 bg-primary-foreground text-primary hover:bg-primary-foreground/90">{
+                                sent
+                                    ? 'Solicitud enviada'
+                                    : 'Solicitar demo'
+                            }</Button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer className="border-t border-border bg-card/40 px-5 py-12 lg:px-8">
+            <div
+                className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-8">
+                <div>
+                    <a href="#inicio" className="flex items-center gap-2 font-bold tracking-tight">
+                        <span
+                            className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Zap/></span>
+                        <span className="text-xl">amax<span className="text-primary">tech</span>
+                        </span>
+                    </a>
+                    <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">La plataforma comercial para vender, administrar y crecer con control.</p>
+                </div>
+                <div>
+                    <p className="text-sm font-semibold">Producto</p>
+                    <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
+                        <a href="#showcase">Ver plataforma</a>
+                        <a href="#segmentos">Módulos</a>
+                        <a href={manualUrl} target="_blank" rel="noreferrer">Manual de usuario</a>
+                    </div>
+                </div>
+                <div>
+                    <p className="text-sm font-semibold">Empresa</p>
+                    <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
+                        <a href="#precios">Planes y propuesta</a>
+                        <a href="#faq">Preguntas frecuentes</a>
+                        <a href="#contacto">Solicitar demostración</a>
+                    </div>
+                </div>
+                <div>
+                    <p className="text-sm font-semibold">Conversemos</p>
+                    <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
+                        <a
+                            className="flex items-center gap-2 hover:text-foreground"
+                            href="mailto:ventas@amaxtech.com"><Mail/>
+                            ventas@amaxtech.com</a>
+                        <a
+                            className="flex items-center gap-2 hover:text-foreground"
+                            href="https://www.linkedin.com/company/amaxtech"
+                            target="_blank"
+                            rel="noreferrer"><BriefcaseBusiness/>
+                            LinkedIn</a>
+                        <a
+                            className="flex items-center gap-2 hover:text-foreground"
+                            href="https://wa.me/584122649707"
+                            target="_blank"
+                            rel="noreferrer"><MessageCircle/>
+                            WhatsApp comercial</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+                <p>© 2026 AmaxTech. Todos los derechos reservados.</p>
+                <p>Catálogo, ventas y gestión administrativa.</p>
+            </div>
+        </footer>
+        <a
+            href="https://wa.me/584122649707?text=Hola%20AmaxTech%2C%20quiero%20conocer%20la%20plataforma"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Contactar a AmaxTech por WhatsApp"
+            className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:scale-105"><MessageCircle/></a>
+    </main>
 }
 
-function Value({ icon: Icon, title, text }: { icon: React.ElementType; title: string; text: string }) { return <article className="rounded-2xl border border-border bg-card p-6"><div className="flex items-center gap-3"><Icon className="text-primary" /><h3 className="text-lg font-semibold">{title}</h3></div><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{text}</p></article> }
-function ShowcaseImage({ src, label, title, className }: { src: string; label: string; title: string; className?: string }) { return <article className={cn('group overflow-hidden rounded-2xl border border-border bg-card shadow-xl shadow-primary/5', className)}><div className="relative aspect-[16/10] overflow-hidden bg-secondary"><Image src={src} alt={title} fill sizes="(max-width: 1024px) 100vw, 70vw" className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" /></div><div className="p-5"><p className="text-xs font-medium uppercase tracking-[0.16em] text-primary">{label}</p><h3 className="mt-2 text-lg font-semibold tracking-tight">{title}</h3></div></article> }
-function Strength({ icon: Icon, title, text }: { icon: React.ElementType; title: string; text: string }) { return <article className="rounded-2xl border border-border bg-background p-6"><div className="flex items-start gap-4"><div className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary"><Icon /></div><div><h3 className="font-semibold tracking-tight">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p></div></div></article> }
-function PriceCard({ name, price, detail, features, popular = false }: { name: string; price: string; detail: string; features: string[]; popular?: boolean }) { return <article className={cn('relative rounded-2xl border bg-background p-6', popular ? 'border-primary shadow-lg shadow-primary/10' : 'border-border')}><div className="flex items-start justify-between gap-3"><h4 className="text-base font-semibold">{name}</h4>{popular && <span className="shrink-0 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground">Más popular</span>}</div><p className="mt-5 font-mono text-3xl font-semibold">{price}<span className="font-sans text-sm font-medium text-muted-foreground">{detail}</span></p><ul className="mt-6 flex flex-col gap-3 text-xs leading-relaxed text-muted-foreground">{features.map(feature => <li key={feature} className="flex items-start gap-2"><Check className="mt-0.5 shrink-0 text-primary" />{feature}</li>)}</ul><Button className="mt-7 w-full" variant={popular ? 'default' : 'outline'} asChild><a href="#contacto">Elegir plan</a></Button></article> }
-function DashboardMockup() { return <div className="relative rounded-2xl border border-border bg-card p-3 shadow-2xl shadow-primary/10"><div className="rounded-xl border border-border bg-background p-4 sm:p-6"><div className="flex items-center justify-between"><div><p className="text-xs text-muted-foreground">Ingresos del mes</p><p className="mt-1 text-2xl font-semibold">$3.845,20</p></div><span className="rounded-full bg-primary/15 px-2 py-1 text-xs text-primary">+18,4%</span></div><div className="mt-8 flex h-40 items-end gap-2 border-b border-border px-2">{[35,48,42,65,54,72,58,88,76,100,83,96].map((h, i) => <div key={i} style={{ height: `${h}%` }} className={`flex-1 rounded-t-sm ${i > 8 ? 'bg-primary' : 'bg-secondary'}`} />)}</div><div className="mt-5 grid grid-cols-3 gap-3">{[['Solicitudes','27'],['Stock bajo','6'],['Tasa','Bs. 36,82']].map(([a,b]) => <div key={a} className="rounded-lg bg-secondary/60 p-3"><p className="text-[10px] text-muted-foreground">{a}</p><p className="mt-1 text-sm font-medium">{b}</p></div>)}</div></div></div> }
+function Value({icon: Icon, title, text} : {
+    icon: React.ElementType;
+    title: string;
+    text: string
+}) {
+    return <article className="rounded-2xl border border-border bg-card p-6">
+        <div className="flex items-center gap-3"><Icon className="text-primary"/>
+            <h3 className="text-lg font-semibold">{title}</h3>
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{text}</p>
+    </article>
+}
+function ShowcaseImage({src, label, title, className} : {
+    src: string;
+    label: string;
+    title: string;
+    className?: string
+}) {
+    return <article
+        className={cn(
+            'group overflow-hidden rounded-2xl border border-border bg-card shadow-xl shado' +
+                    'w-primary/5',
+            className
+        )}>
+        <div className="relative aspect-[16/10] overflow-hidden bg-secondary"><Image
+            src={src}
+            alt={title}
+            fill="fill"
+            sizes="(max-width: 1024px) 100vw, 70vw"
+            className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"/></div>
+        <div className="p-5">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-primary">{label}</p>
+            <h3 className="mt-2 text-lg font-semibold tracking-tight">{title}</h3>
+        </div>
+    </article>
+}
+function Strength({icon: Icon, title, text} : {
+    icon: React.ElementType;
+    title: string;
+    text: string
+}) {
+    return <article className="rounded-2xl border border-border bg-background p-6">
+        <div className="flex items-start gap-4">
+            <div
+                className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary"><Icon/></div>
+            <div>
+                <h3 className="font-semibold tracking-tight">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p>
+            </div>
+        </div>
+    </article>
+}
+function PriceCard({
+    name,
+    price,
+    detail,
+    features,
+    popular = false
+} : {
+    name: string;
+    price: string;
+    detail: string;
+    features: string[];
+    popular?: boolean
+}) {
+    return <article
+        className={cn(
+            'relative rounded-2xl border bg-background p-6',
+            popular
+                ? 'border-primary shadow-lg shadow-primary/10'
+                : 'border-border'
+        )}>
+        <div className="flex items-start justify-between gap-3">
+            <h4 className="text-base font-semibold">{name}</h4>{
+                popular && <span
+                        className="shrink-0 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground">Más popular</span>
+            }</div>
+        <p className="mt-5 font-mono text-3xl font-semibold">{price}<span className="font-sans text-sm font-medium text-muted-foreground">{detail}</span>
+        </p>
+        <ul
+            className="mt-6 flex flex-col gap-3 text-xs leading-relaxed text-muted-foreground">{
+                features.map(
+                    feature => <li key={feature} className="flex items-start gap-2"><Check className="mt-0.5 shrink-0 text-primary"/>{feature}</li>
+                )
+            }</ul>
+        <Button
+            className="mt-7 w-full"
+            variant={popular
+                ? 'default'
+                : 'outline'}
+            asChild="asChild">
+            <a href="#contacto">Elegir plan</a>
+        </Button>
+    </article>
+}
+function DashboardMockup() {
+    return <div
+        className="relative rounded-2xl border border-border bg-card p-3 shadow-2xl shadow-primary/10">
+        <div className="rounded-xl border border-border bg-background p-4 sm:p-6">
+            <div className="flex items-center justify-between">
+                <div>
+                    <p className="text-xs text-muted-foreground">Ingresos del mes</p>
+                    <p className="mt-1 text-2xl font-semibold">$3.845,20</p>
+                </div>
+                <span className="rounded-full bg-primary/15 px-2 py-1 text-xs text-primary">+18,4%</span>
+            </div>
+            <div className="mt-8 flex h-40 items-end gap-2 border-b border-border px-2">{
+                    [
+                        35,
+                        48,
+                        42,
+                        65,
+                        54,
+                        72,
+                        58,
+                        88,
+                        76,
+                        100,
+                        83,
+                        96
+                    ].map(
+                        (h, i) => <div
+                            key={i}
+                            style={{
+                                height: `${h}%`
+                            }}
+                            className={`flex-1 rounded-t-sm ${i > 8
+                                ? 'bg-primary'
+                                : 'bg-secondary'}`}/>
+                    )
+                }</div>
+            <div className="mt-5 grid grid-cols-3 gap-3">{
+                    [
+                        [
+                            'Solicitudes', '27'
+                        ],
+                        [
+                            'Stock bajo', '6'
+                        ],
+                        [
+                            'Tasa', 'Bs. 36,82'
+                        ]
+                    ].map(
+                        ([a, b]) => <div key={a} className="rounded-lg bg-secondary/60 p-3">
+                            <p className="text-[10px] text-muted-foreground">{a}</p>
+                            <p className="mt-1 text-sm font-medium">{b}</p>
+                        </div>
+                    )
+                }</div>
+        </div>
+    </div>
+}
