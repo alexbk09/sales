@@ -9,8 +9,10 @@
 }
 
 :root { color-scheme: dark; --background: #0B0F19; --foreground: #F8FAFC; --card: #1E293B; --card-foreground: #F8FAFC; --popover: #1E293B; --popover-foreground: #F8FAFC; --primary: #10B981; --primary-foreground: #052e1d; --secondary: #26364d; --secondary-foreground: #F8FAFC; --muted: #162235; --muted-foreground: #94A3B8; --accent: #3B82F6; --accent-foreground: #F8FAFC; --destructive: #ef4444; --border: #334155; --input: #334155; --ring: #10B981; --radius: .75rem; }
+.light { color-scheme: light; --background: #F8FAFC; --foreground: #0B0F19; --card: #FFFFFF; --card-foreground: #0B0F19; --popover: #FFFFFF; --popover-foreground: #0B0F19; --primary: #059669; --primary-foreground: #ECFDF5; --secondary: #E2E8F0; --secondary-foreground: #0B0F19; --muted: #F1F5F9; --muted-foreground: #475569; --accent: #2563EB; --accent-foreground: #EFF6FF; --destructive: #DC2626; --border: #CBD5E1; --input: #CBD5E1; --ring: #059669; }
 
 * { @apply border-border outline-ring/50; }
-html { background: #0B0F19; scroll-behavior: smooth; }
-body { @apply bg-background text-foreground font-sans antialiased; background-image: linear-gradient(#1e293b12 1px, transparent 1px), linear-gradient(90deg, #1e293b12 1px, transparent 1px); background-size: 48px 48px; }
-::selection { background: #10B981; color: #052e1d; }
+html { background: var(--background); scroll-behavior: smooth; }
+body { @apply bg-background text-foreground font-sans antialiased; background-image: linear-gradient(color-mix(in srgb, var(--border) 28%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--border) 28%, transparent) 1px, transparent 1px); background-size: 48px 48px; }
+::selection { background: var(--primary); color: var(--primary-foreground); }
+button, a { transition: color .2s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease; }

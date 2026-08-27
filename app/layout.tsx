@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   generator: 'v0.app',
 }
 
-export const viewport: Viewport = { colorScheme: 'dark', themeColor: '#0B0F19' }
+export const viewport: Viewport = { colorScheme: 'dark light', themeColor: '#0B0F19' }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="es" className="bg-background"><body className={`${geist.variable} ${geistMono.variable}`}>{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
