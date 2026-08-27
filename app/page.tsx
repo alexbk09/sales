@@ -407,7 +407,7 @@ export default function Home() {
                                 <span className="font-sans text-base font-medium text-muted-foreground">USD · pago único</span>
                             </p>
                             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">Incluye una cuota obligatoria de
-                                <span className="font-semibold text-foreground">$29 USD mensuales</span>
+                                <span className="font-semibold text-foreground">$50 USD mensuales</span>
                                 por mantenimiento y soporte cloud. Tu base de datos Supabase dedicada, hosting
                                 de alta velocidad, respaldos diarios y actualizaciones técnicas operan sin
                                 interrupciones, 24/7.</p>
