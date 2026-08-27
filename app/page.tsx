@@ -28,7 +28,7 @@ import {
 import {Button, buttonVariants} from '@/components/ui/button'
 import {cn} from '@/lib/utils'
 
-const manualUrl = 'hhttps://ilumax.vercel.app/manual'
+const manualUrl = 'https://ilumax.vercel.app/manual'
 const faqs = [
     [
         '¿Qué incluye AmaxTech?', 'Una tienda digital con catálogo, carrito y solicitudes, además de un panel adm' +
