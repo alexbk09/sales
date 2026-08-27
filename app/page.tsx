@@ -112,6 +112,7 @@ export default function Home() {
                     className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
                     <a href="#producto">Plataforma</a>
                     <a href="#segmentos">Módulos</a>
+                    <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
                     <a href="#manual">Manual</a>
                     <a href="#precios">Planes</a>
                 </nav>
@@ -145,6 +146,7 @@ export default function Home() {
                         className="flex flex-col gap-4 border-t border-border px-5 py-5 text-sm md:hidden">
                         <a href="#producto" onClick={() => setMenuOpen(false)}>Plataforma</a>
                         <a href="#segmentos" onClick={() => setMenuOpen(false)}>Módulos</a>
+                        <a href="/preguntas-frecuentes" onClick={() => setMenuOpen(false)}>Preguntas frecuentes</a>
                         <a href="#manual" onClick={() => setMenuOpen(false)}>Manual</a>
                         <a href="#precios" onClick={() => setMenuOpen(false)}>Planes</a>
                         <Button asChild="asChild">
@@ -519,7 +521,7 @@ export default function Home() {
                     <p className="text-sm font-semibold">Empresa</p>
                     <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
                         <a href="#precios">Planes y propuesta</a>
-                        <a href="#faq">Preguntas frecuentes</a>
+                        <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
                         <a href="#contacto">Solicitar demostración</a>
                     </div>
                 </div>
