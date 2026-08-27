@@ -201,16 +201,16 @@ export default function Home() {
                 </div>
                 <div className="mt-12 grid gap-6 lg:grid-cols-[1.35fr_0.65fr]"><ShowcaseImage
                     src="/mockups/admin.png"
-                    label="La tienda que ve tu cliente"
-                    title="Catálogo que convierte visitas en solicitudes"
+                    label="Centro de control "
+                    title="Toda tu operación, en una sola pantalla "
                     className="lg:row-span-2"/>
                     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1"><ShowcaseImage
                         src="/mockups/Screenshot 2026-08-27 143641.png"
-                        label="Detalle de producto"
-                        title="Cada ficha responde antes de que pregunten"/><ShowcaseImage
+                        label="La tienda que ve tu cliente"
+                        title="Catálogo que convierte visitas en solicitudes"/><ShowcaseImage
                         src="/mockups/Screenshot 2026-08-27 143700.png"
-                        label="Centro de control"
-                        title="Toda tu operación, en una sola pantalla"/></div>
+                        label="Detalle de producto"
+                        title="Cada ficha responde antes de que pregunten "/></div>
                 </div>
                 <div className="mt-10 grid gap-4 border-t border-border pt-8 sm:grid-cols-3">
                     <div>
@@ -549,6 +549,19 @@ export default function Home() {
                 className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
                 <p>© 2026 AmaxTech. Todos los derechos reservados.</p>
                 <p>Catálogo, ventas y gestión administrativa.</p>
+                <div className="flex flex-col items-start gap-1 border-l-2 border-border pl-3">
+                    <p className="flex items-center gap-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code-xml" aria-hidden="true">
+                            <path d="m18 16 4-4-4-4"></path>
+                            <path d="m6 8-4 4 4 4"></path>
+                            <path d="m14.5 4-5 16"></path>
+                        </svg>
+                        Desarrollado por
+                    </p>
+                    <a href="https://portafolio-new-jet.vercel.app" target="_blank" rel="noreferrer" className="group flex items-center gap-1 text-xs font-semibold text-muted-foreground transition-colors hover:text-brand">
+                        <span className="underline decoration-border underline-offset-2 transition-colors group-hover:decoration-brand">Keiber Paez</span>
+                    </a>
+                </div>
             </div>
         </footer>
         <a
