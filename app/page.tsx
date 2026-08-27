@@ -200,15 +200,15 @@ export default function Home() {
                         <ArrowRight data-icon="inline-end"/></a>
                 </div>
                 <div className="mt-12 grid gap-6 lg:grid-cols-[1.35fr_0.65fr]"><ShowcaseImage
-                    src="/mockups/catalogo-amaxtech.png"
+                    src="/mockups/admin.png"
                     label="La tienda que ve tu cliente"
                     title="Catálogo que convierte visitas en solicitudes"
                     className="lg:row-span-2"/>
                     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1"><ShowcaseImage
-                        src="/mockups/modal-producto-amaxtech.png"
+                        src="/mockups/Screenshot 2026-08-27 143641.png"
                         label="Detalle de producto"
                         title="Cada ficha responde antes de que pregunten"/><ShowcaseImage
-                        src="/mockups/dashboard-amaxtech.png"
+                        src="/mockups/Screenshot 2026-08-27 143700.png"
                         label="Centro de control"
                         title="Toda tu operación, en una sola pantalla"/></div>
                 </div>
