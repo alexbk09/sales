@@ -3,20 +3,26 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import {
+  Archive,
   ArrowRight,
   BarChart3,
   Boxes,
   Building2,
   Check,
   ChevronDown,
+  CircleDollarSign,
+  ClipboardList,
   Factory,
   Globe2,
   Languages,
+  Layers3,
+  MapPinned,
   Mail,
   Menu,
   Moon,
   Package,
   ReceiptText,
+  Ruler,
   ShieldCheck,
   ShoppingCart,
   Sun,
@@ -37,24 +43,24 @@ type Copy = typeof copy.es
 
 const copy = {
   es: {
-    nav: ['Plataforma', 'Soluciones', 'Demo', 'Planes', 'Preguntas'],
-    heroBadge: 'Wholesale Commerce Management Platform',
-    heroTitle: 'Your Business. Your Inventory. One Platform.',
-    heroSubtitle: 'Gestiona tus productos, tienda online, ventas y operaciones desde una sola plataforma.',
-    primaryCta: 'Book a Free Demo',
-    secondaryCta: 'Explore the Platform',
-    problemTitle: 'De una vitrina a una operación conectada',
-    problemText: 'AmaxTech conecta el catálogo digital, la tienda online, el inventario, las cotizaciones y los pedidos para que tu equipo trabaje con la misma información.',
+    nav: ['Plataforma', 'Industrias', 'Demo', 'Planes', 'Preguntas'],
+    heroBadge: 'Plataforma de gestión comercial',
+    heroTitle: 'Tu tienda. Tu operación. Todo conectado.',
+    heroSubtitle: 'Gestiona tu catálogo, inventario, cotizaciones y ventas desde una sola plataforma diseñada para distribuidores y negocios mayoristas.',
+    primaryCta: 'Solicitar demostración gratuita',
+    secondaryCta: 'Explorar demo interactiva',
+    problemTitle: 'La operación deja de vivir en herramientas desconectadas',
+    problemText: 'AmaxTech une el catálogo digital, la tienda online, el inventario y el seguimiento comercial para que tu equipo trabaje con la misma información.',
   },
   en: {
     nav: ['Platform', 'Industries', 'Demo', 'Plans', 'FAQ'],
-    heroBadge: 'Wholesale Commerce Management Platform',
-    heroTitle: 'Your Business. Your Inventory. One Platform.',
-    heroSubtitle: 'Manage your products, online store, sales and operations with one powerful business platform.',
-    primaryCta: 'Book a Free Demo',
-    secondaryCta: 'Explore the Platform',
-    problemTitle: 'From a storefront to one connected operation',
-    problemText: 'AmaxTech connects your digital catalog, online store, inventory, quotations and orders so your team works from the same information.',
+    heroBadge: 'Commercial management platform',
+    heroTitle: 'Your store. Your operation. Everything connected.',
+    heroSubtitle: 'Manage your catalog, inventory, quotations and sales from one platform built for distributors and wholesale businesses.',
+    primaryCta: 'Request a free demonstration',
+    secondaryCta: 'Explore the interactive demo',
+    problemTitle: 'Operations stop living in disconnected tools',
+    problemText: 'AmaxTech connects the digital catalog, online store, inventory and commercial follow-up so your team works from the same information.',
   },
 }
 
@@ -219,13 +225,12 @@ export default function Home() {
               <ShieldCheck /> {t.heroBadge}
             </div>
             <h1 className="max-w-3xl text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
-              {lang === 'es' ? <>Tu negocio. Tu inventario. <span className="text-primary">Una plataforma.</span></> : t.heroTitle}
+              {lang === 'es' ? <>Tu tienda. Tu operación. <span className="text-primary">Todo conectado.</span></> : t.heroTitle}
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{t.heroSubtitle}</p>
-            <p className="mt-3 max-w-xl text-sm text-muted-foreground">{lang === 'es' ? 'Todo lo que necesita tu negocio basado en productos: vender, gestionar inventario y controlar operaciones.' : 'Everything your product-based business needs to sell, manage inventory and control operations.'}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" asChild><a href="#contacto">{t.primaryCta}<ArrowRight /></a></Button>
-              <Button size="lg" variant="outline" asChild><a href="#plataforma">{t.secondaryCta}</a></Button>
+              <Button size="lg" variant="outline" asChild><a href={liveDemoUrl} target="_blank" rel="noreferrer">{t.secondaryCta}<ArrowRight /></a></Button>
             </div>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
               {['Catálogo', 'Inventario', 'Ventas', 'Cotizaciones'].map((item) => <span key={item} className="flex items-center gap-2"><Check className="size-4 text-primary" />{item}</span>)}
@@ -238,6 +243,42 @@ export default function Home() {
               <p className="text-xs text-muted-foreground">{lang === 'es' ? 'Administración centralizada' : 'Centralized administration'}</p>
               <p className="mt-1 font-semibold">{lang === 'es' ? 'Productos · Stock · Pedidos · Clientes' : 'Products · Stock · Orders · Customers'}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-card/30 px-5 py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="mb-3 text-sm font-medium text-primary">{lang === 'es' ? 'PROBLEMAS QUE RESUELVE' : 'PROBLEMS IT SOLVES'}</p>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">{lang === 'es' ? 'Menos desorden operativo. Más control comercial.' : 'Less operational clutter. More commercial control.'}</h2>
+          </div>
+          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+            {[
+              lang === 'es'
+                ? ['Inventario desorganizado', 'Stock centralizado por producto, variante y almacén según el alcance configurado.']
+                : ['Disorganized inventory', 'Centralized stock by product, variant and warehouse according to the configured scope.'],
+              lang === 'es'
+                ? ['Productos en múltiples hojas', 'Catálogo y productos administrados en una sola aplicación.']
+                : ['Products spread across spreadsheets', 'Catalog and products managed in one application.'],
+              lang === 'es'
+                ? ['Cotizaciones manuales', 'Cotizaciones profesionales con seguimiento dentro del flujo comercial.']
+                : ['Manual quotations', 'Professional quotations with follow-up in the commercial workflow.'],
+              lang === 'es'
+                ? ['Pedidos difíciles de controlar', 'Pedidos y solicitudes estructurados para que el equipo dé seguimiento.']
+                : ['Hard-to-track orders', 'Structured orders and requests for the team to follow up.'],
+              lang === 'es'
+                ? ['Catálogos desactualizados', 'Publicación de productos, categorías, marcas y variantes desde el panel.']
+                : ['Outdated catalogs', 'Publish products, categories, brands and variants from the administration panel.'],
+              lang === 'es'
+                ? ['Procesos comerciales desconectados', 'Catálogo, ventas, clientes, inventario y reportes organizados por módulos.']
+                : ['Disconnected sales processes', 'Catalog, sales, customers, inventory and reports organized by module.'],
+            ].map(([problem, solution]) => (
+              <article key={problem} className="bg-background p-6">
+                <p className="text-sm font-semibold">{problem}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground"><span className="font-medium text-primary">{lang === 'es' ? 'Con AmaxTech: ' : 'With AmaxTech: '}</span>{solution}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -268,6 +309,53 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div className="max-w-3xl">
+            <p className="mb-3 text-sm font-medium text-primary">{lang === 'es' ? 'FUNCIONALIDADES PRINCIPALES' : 'CORE FEATURES'}</p>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">{lang === 'es' ? 'Todo lo necesario para centralizar la operación comercial.' : 'Everything needed to centralize commercial operations.'}</h2>
+          </div>
+        </div>
+        {[
+          {
+            title: lang === 'es' ? 'Comercio digital' : 'Digital commerce',
+            icon: ShoppingCart,
+            items: lang === 'es'
+              ? ['Catálogo digital', 'Tienda online', 'Productos', 'Categorías y marcas', 'Variantes de productos']
+              : ['Digital catalog', 'Online store', 'Products', 'Categories and brands', 'Product variants'],
+          },
+          {
+            title: lang === 'es' ? 'Gestión comercial' : 'Commercial management',
+            icon: ReceiptText,
+            items: lang === 'es'
+              ? ['Gestión de clientes', 'Cotizaciones', 'Pedidos', 'Cuentas por cobrar', 'Reportes']
+              : ['Customer management', 'Quotations', 'Orders', 'Accounts receivable', 'Reports'],
+          },
+          {
+            title: lang === 'es' ? 'Inventario y administración' : 'Inventory and administration',
+            icon: Warehouse,
+            items: lang === 'es'
+              ? ['Inventario', 'Proveedores', 'Almacenes', 'Despachos', 'Zonas de envío', 'Usuarios y roles']
+              : ['Inventory', 'Suppliers', 'Warehouses', 'Dispatches', 'Shipping zones', 'Users and roles'],
+          },
+        ].map(({ title, icon: Icon, items }) => (
+          <article key={title} className="mt-6 rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center gap-3">
+              <div className="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary"><Icon /></div>
+              <h3 className="text-lg font-semibold">{title}</h3>
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {items.map((item) => (
+                <div key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Check className="size-4 shrink-0 text-primary" />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </section>
+
       <section id="industrias" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
         <div className="text-center">
           <p className="mb-3 text-sm font-medium text-primary">{lang === 'es' ? 'INDUSTRIAS OBJETIVO' : 'TARGET INDUSTRIES'}</p>
@@ -290,10 +378,10 @@ export default function Home() {
           <div>
             <p className="mb-3 text-sm font-medium text-accent">{lang === 'es' ? 'DEMOSTRACIÓN REAL' : 'LIVE DEMONSTRATION'}</p>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{lang === 'es' ? 'Explora ilumaX, una tienda creada con AmaxTech.' : 'Explore ilumaX, a store built with AmaxTech.'}</h2>
-            <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">{lang === 'es' ? 'Recorre la tienda, consulta productos y utiliza el flujo de solicitudes. En el panel podrás revisar administración, catálogo y operación.' : 'Browse the store, inspect products and try the purchase request flow. The administration demonstrates catalog and operational management.'}</p>
+            <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">{lang === 'es' ? 'ilumaX es una implementación demostrativa de AmaxTech para un negocio de iluminación. Explora el catálogo, los productos y el flujo de solicitudes; el panel muestra la administración de catálogo y operación. No la presentamos como un cliente real ni atribuimos resultados comerciales.' : 'ilumaX is a demonstration implementation of AmaxTech for a lighting business. Explore the catalog, products and request flow; the panel shows catalog and operations administration. It is not presented as a real customer or attributed commercial results.'}</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <Button asChild><a href={liveDemoUrl} target="_blank" rel="noreferrer">{lang === 'es' ? 'Explore Live Demo' : 'Explore Live Demo'}<ArrowRight /></a></Button>
-              <Button variant="outline" asChild><a href={manualUrl} target="_blank" rel="noreferrer">{lang === 'es' ? 'Abrir manual' : 'Open manual'}</a></Button>
+              <Button asChild><a href={liveDemoUrl} target="_blank" rel="noreferrer">{lang === 'es' ? 'Explorar demostración' : 'Explore demonstration'}<ArrowRight /></a></Button>
+              <Button variant="outline" asChild><a href={manualUrl} target="_blank" rel="noreferrer">{lang === 'es' ? 'Consultar manual' : 'View manual'}</a></Button>
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-background p-2">
@@ -309,11 +397,11 @@ export default function Home() {
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-5">
           {[
-            lang === 'es' ? ['1', 'Configuramos', 'Definimos empresa, marca y alcance.'] : ['1', 'Configure', 'We define the company, brand and scope.'],
-            lang === 'es' ? ['2', 'Importamos', 'Registramos o cargamos tus productos.'] : ['2', 'Import', 'We register or upload your products.'],
-            lang === 'es' ? ['3', 'Organizamos', 'Configuramos inventario y catálogo.'] : ['3', 'Organize', 'We configure inventory and catalog.'],
-            lang === 'es' ? ['4', 'Activamos', 'Publicamos tu tienda digital.'] : ['4', 'Activate', 'We launch your digital store.'],
-            lang === 'es' ? ['5', 'Operamos', 'Comienzas a gestionar pedidos.'] : ['5', 'Operate', 'You start managing orders.'],
+            lang === 'es' ? ['1', 'Configura tu catálogo', 'Organiza categorías, marcas, productos y variantes.'] : ['1', 'Configure your catalog', 'Organize categories, brands, products and variants.'],
+            lang === 'es' ? ['2', 'Publica tus productos', 'Activa la información comercial en la tienda digital.'] : ['2', 'Publish your products', 'Activate commercial information in the digital store.'],
+            lang === 'es' ? ['3', 'Recibe solicitudes y pedidos', 'Centraliza las consultas y solicitudes de compra.'] : ['3', 'Receive requests and orders', 'Centralize inquiries and purchase requests.'],
+            lang === 'es' ? ['4', 'Gestiona cotizaciones y ventas', 'Da seguimiento al proceso desde la cotización hasta el pedido.'] : ['4', 'Manage quotations and sales', 'Follow the process from quotation to order.'],
+            lang === 'es' ? ['5', 'Controla inventario y operaciones', 'Consulta stock y administra almacenes, despachos y reportes.'] : ['5', 'Control inventory and operations', 'Review stock and manage warehouses, dispatches and reports.'],
           ].map(([number, title, text]) => <article key={number} className="rounded-2xl border border-border bg-card p-5">
             <span className="grid size-9 place-items-center rounded-full bg-primary text-sm font-bold text-primary-foreground">{number}</span>
             <h3 className="mt-5 font-semibold">{title}</h3>

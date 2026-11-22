@@ -1,5 +1,24 @@
 # Auditoría y estado comercial de AmaxTech
 
+## Diagnóstico inicial del repositorio
+
+- Se construye sobre Next.js 16.3.3 y React 19.2.4, con Tailwind CSS 4 y componentes UI basados en Base UI.
+- La aplicación utiliza App Router. La landing vive en `app/page.tsx`, la ruta de preguntas en `app/preguntas-frecuentes/page.tsx` y los estilos globales en `app/globals.css`.
+- Los datos comerciales de planes y licencias están centralizados en `lib/pricing.ts`; el rediseño no altera su configuración ni presenta nuevos precios.
+- El sitio dispone de capturas reales en `public/mockups/` y las usa para representar el panel, catálogo y demostración ilumaX.
+- Existe selector de idioma español/inglés y tema claro/oscuro. Las traducciones están contenidas en los componentes, no en un sistema i18n externo.
+- El único formulario comercial prepara un correo mediante `mailto:` y no persiste leads ni conecta con CRM/backend.
+- No existen pruebas automatizadas configuradas en el repositorio.
+
+## Problemas comerciales detectados y corregidos
+
+- El hero anterior no seguía la propuesta exacta “Tu tienda. Tu operación. Todo conectado.” ni el posicionamiento de plataforma de gestión comercial.
+- Faltaban bloques explícitos que relacionaran los problemas operativos con soluciones concretas.
+- Las funcionalidades estaban resumidas y no mostraban claramente áreas comerciales, inventario y administración.
+- El flujo de implementación no estaba expresado en los cinco pasos comerciales solicitados.
+- La demostración ilumaX debía diferenciarse claramente de un cliente real y evitar atribuir resultados no verificables.
+- Los metadatos SEO describían la plataforma principalmente como ecommerce; ahora priorizan distribuidores y mayoristas.
+
 ## Resumen técnico
 
 - Framework: Next.js 16 con React 19 y Tailwind CSS 4.

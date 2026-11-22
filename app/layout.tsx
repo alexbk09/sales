@@ -7,15 +7,16 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
 export const metadata: Metadata = {
-  title: 'AmaxTech — Wholesale Commerce Management Platform',
-  description: 'Inventory and ecommerce platform to manage products, online store, sales, quotations and business operations.',
+  title: 'AmaxTech — Plataforma de gestión comercial para distribuidores',
+  description: 'Gestiona catálogo, inventario, cotizaciones y ventas desde una plataforma diseñada para distribuidores y mayoristas.',
   applicationName: 'AmaxTech',
   keywords: [
-    'inventory management software',
-    'wholesale management software',
-    'inventory and ecommerce platform',
-    'business management software',
-    'stock management system',
+    'plataforma de gestión comercial',
+    'software para distribuidores',
+    'software para mayoristas',
+    'gestión de inventario',
+    'catálogo digital',
+    'cotizaciones y pedidos',
   ],
   alternates: { canonical: 'https://sales-delta-rouge.vercel.app' },
   openGraph: {
@@ -23,8 +24,8 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     alternateLocale: ['en_US'],
     url: 'https://sales-delta-rouge.vercel.app',
-    title: 'AmaxTech — Wholesale Commerce Management Platform',
-    description: 'Manage inventory, online store, sales and business operations in one platform.',
+    title: 'AmaxTech — Plataforma de gestión comercial',
+    description: 'Catálogo, inventario, cotizaciones y ventas conectados en una sola plataforma.',
   },
 }
 
@@ -38,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     url: 'https://sales-delta-rouge.vercel.app',
-    description: 'Wholesale commerce platform for inventory, ecommerce, sales and business operations.',
+    description: 'Plataforma de gestión comercial para distribuidores y mayoristas.',
   }
 
   return (
