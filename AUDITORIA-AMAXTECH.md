@@ -8,6 +8,7 @@
 - Datos comerciales: `lib/pricing.ts`.
 - Capturas reales: `public/mockups/`.
 - El formulario no usa backend ni almacenamiento. Prepara un correo dirigido a `ventas@amaxtech.com`.
+- El formulario incluye desafío matemático y campo oculto anti-bot. Es una protección frontal básica; no sustituye un CAPTCHA verificado por servidor.
 
 ## Cambios implementados
 

@@ -130,6 +130,12 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const [sent, setSent] = useState(false)
   const [mailLink, setMailLink] = useState('')
+  const [captcha, setCaptcha] = useState(() => ({
+    left: Math.floor(Math.random() * 8) + 2,
+    right: Math.floor(Math.random() * 8) + 2,
+  }))
+  const [captchaAnswer, setCaptchaAnswer] = useState('')
+  const [captchaError, setCaptchaError] = useState('')
   const t: Copy = copy[lang]
   const selectedFaqs = faqs[lang === 'es' ? 0 : 1]
 
@@ -141,6 +147,15 @@ export default function Home() {
   const submitLead = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
+    if (String(data.get('website')).trim()) return
+    if (Number(captchaAnswer) !== captcha.left + captcha.right) {
+      setCaptchaError(lang === 'es'
+        ? 'Resuelve correctamente la operación para continuar.'
+        : 'Solve the operation correctly to continue.')
+      setSent(false)
+      return
+    }
+    setCaptchaError('')
     const message = lang === 'es'
       ? `Hola AmaxTech, quiero solicitar una demostración.\n\nNombre: ${data.get('name')}\nEmpresa: ${data.get('company')}\nCorreo: ${data.get('email')}\nPaís: ${data.get('country')}\nTipo de negocio: ${data.get('business')}\nProductos aproximados: ${data.get('products')}\nNecesidad principal: ${data.get('need')}`
       : `Hello AmaxTech, I would like to book a demonstration.\n\nName: ${data.get('name')}\nCompany: ${data.get('company')}\nEmail: ${data.get('email')}\nCountry: ${data.get('country')}\nBusiness type: ${data.get('business')}\nApproximate products: ${data.get('products')}\nMain need: ${data.get('need')}`
@@ -149,6 +164,11 @@ export default function Home() {
     const link = `mailto:${salesEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
     setMailLink(link)
     window.location.href = link
+    setCaptchaAnswer('')
+    setCaptcha({
+      left: Math.floor(Math.random() * 8) + 2,
+      right: Math.floor(Math.random() * 8) + 2,
+    })
   }
 
   return (
@@ -422,6 +442,13 @@ export default function Home() {
               <p className="mt-4 leading-relaxed text-primary-foreground/75">{lang === 'es' ? 'Cuéntanos qué necesita tu operación. Al enviar, se abrirá tu aplicación de correo con la solicitud preparada para ventas@amaxtech.com.' : 'Tell us what your operation needs. On submit, your email application opens with the request prepared for ventas@amaxtech.com.'}</p>
             </div>
             <form onSubmit={submitLead} className="grid gap-3 sm:grid-cols-2">
+              <input
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute -left-[9999px] h-px w-px opacity-0"
+              />
               {[
                 ['name', lang === 'es' ? 'Nombre' : 'Name', 'text'],
                 ['company', lang === 'es' ? 'Empresa' : 'Company', 'text'],
@@ -441,6 +468,44 @@ export default function Home() {
                   : ['Less than 500', '500–2,000', '2,000–10,000', 'More than 10,000']).map((value) => <option key={value} value={value} className="text-foreground">{value}</option>)}
               </select>
               <textarea name="need" required rows={3} aria-label={lang === 'es' ? 'Necesidad principal' : 'Main need'} placeholder={lang === 'es' ? 'Necesidad principal' : 'Main need'} className="rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-3 text-sm outline-none placeholder:text-primary-foreground/60 sm:col-span-2" />
+              <div className="sm:col-span-2">
+                <label className="mb-2 block text-sm font-medium" htmlFor="captcha-answer">
+                  {lang === 'es'
+                    ? `Verificación: ¿Cuánto es ${captcha.left} + ${captcha.right}?`
+                    : `Verification: What is ${captcha.left} + ${captcha.right}?`}
+                </label>
+                <div className="flex items-center gap-3">
+                  <input
+                    id="captcha-answer"
+                    name="captcha"
+                    type="number"
+                    inputMode="numeric"
+                    required
+                    value={captchaAnswer}
+                    onChange={(event) => {
+                      setCaptchaAnswer(event.target.value)
+                      setCaptchaError('')
+                    }}
+                    aria-describedby={captchaError ? 'captcha-error' : undefined}
+                    className="h-11 w-28 rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-4 text-sm outline-none"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCaptcha({
+                        left: Math.floor(Math.random() * 8) + 2,
+                        right: Math.floor(Math.random() * 8) + 2,
+                      })
+                      setCaptchaAnswer('')
+                      setCaptchaError('')
+                    }}
+                    className="text-sm underline underline-offset-4"
+                  >
+                    {lang === 'es' ? 'Nueva operación' : 'New challenge'}
+                  </button>
+                </div>
+                {captchaError && <p id="captcha-error" role="alert" className="mt-2 text-sm font-medium text-primary-foreground">{captchaError}</p>}
+              </div>
               <Button type="submit" className="h-11 bg-primary-foreground text-primary hover:bg-primary-foreground/90 sm:col-span-2">
                 {sent ? (lang === 'es' ? 'Solicitud preparada' : 'Request prepared') : t.primaryCta}<ArrowRight />
               </Button>
