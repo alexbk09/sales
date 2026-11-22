@@ -26,7 +26,8 @@
 - Página de FAQ: `app/preguntas-frecuentes/page.tsx`.
 - Datos comerciales: `lib/pricing.ts`.
 - Capturas reales: `public/mockups/`.
-- El formulario no usa backend ni almacenamiento. Prepara un correo dirigido a `ventas@amaxtech.com`.
+- El formulario envía solicitudes mediante `POST /api/demo-request` y Nodemailer usando variables SMTP del servidor.
+- No se almacenan leads en base de datos ni CRM; las credenciales SMTP deben mantenerse en variables de entorno privadas.
 - El formulario incluye desafío matemático y campo oculto anti-bot. Es una protección frontal básica; no sustituye un CAPTCHA verificado por servidor.
 
 ## Cambios implementados
@@ -43,7 +44,7 @@
 
 ## Información que requiere confirmación comercial
 
-- Los precios $49, $89 y $149 USD son una propuesta de lanzamiento, no un precio contractual confirmado.
+- Los precios oficiales muestran pagos únicos de implementación de $249, $399 y $599 USD y mensualidades de $129, $219 y $349 USD. Enterprise comienza en $899 de implementación y $499 mensuales.
 - Debe confirmarse qué integraciones están habilitadas en cada plan.
 - El asistente IA solo debe presentarse como disponible si está habilitado para el plan correspondiente.
 - Deben confirmarse contrato, soporte, infraestructura, residencia de datos, respaldos y retención.

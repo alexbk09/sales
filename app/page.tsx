@@ -76,41 +76,58 @@ const industries = [
 const faqs = [
   [
     ['¿Qué tipo de empresas pueden utilizar AmaxTech?', 'Empresas que comercializan productos físicos, como distribuidores, mayoristas, ferreterías y comercios con catálogo e inventario.'],
+    ['¿Cuánto cuesta implementar AmaxTech?', 'Starter cuesta $249 USD de implementación y $129 USD mensuales; Business $399 y $219 mensuales; Professional $599 y $349 mensuales; Enterprise desde $899 y desde $499 mensuales.'],
+    ['¿Qué incluye la mensualidad?', 'La mensualidad mantiene activa la instalación administrada, infraestructura, soporte técnico según el plan y las mejoras generales cuando correspondan.'],
+    ['¿Cada cliente tiene una instalación independiente?', 'Sí. Cada empresa recibe su propio proyecto, base de datos y configuración dentro de la infraestructura administrada por AmaxTech.'],
+    ['¿Cuánto soporte técnico incluye cada plan?', 'Starter incluye hasta 1 hora mensual, Business hasta 2 horas, Professional hasta 4 horas y Enterprise según contrato.'],
     ['¿Puedo administrar una tienda online?', 'Sí. AmaxTech incluye un catálogo público, carrito de compras y solicitudes de compra según la configuración contratada.'],
     ['¿Puedo importar mis productos desde Excel?', 'Sí. Esta capacidad está disponible en los planes Business y superiores.'],
     ['¿Puedo gestionar múltiples almacenes?', 'El multi-almacén está disponible en el plan Professional y puede evaluarse en una implementación Enterprise.'],
     ['¿Puedo personalizar el sistema?', 'Sí, dentro de una implementación Enterprise o mediante alcances acordados específicamente antes de comenzar.'],
     ['¿Cómo funciona la implementación?', 'Se configura la empresa, se carga o importa el catálogo, se define el inventario y la tienda, y luego se activa la operación.'],
     ['¿Necesito conocimientos técnicos?', 'No. La administración está diseñada para operar desde el navegador, con acompañamiento durante la puesta en marcha.'],
-    ['¿Puedo solicitar una demostración?', 'Sí. Puedes completar el formulario y se abrirá una solicitud preparada para enviarla por correo a ventas@amaxtech.com.'],
+    ['¿Puedo solicitar una demostración?', 'Sí. Puedes completar el formulario y la solicitud se enviará directamente al equipo comercial por correo.'],
     ['¿Qué sucede con mis datos?', 'El alcance de residencia, respaldos, exportación y conservación debe confirmarse contractualmente antes de contratar.'],
-    ['¿Qué incluye el soporte?', 'Starter y Business incluyen soporte estándar; Professional ofrece soporte prioritario. Enterprise define el acuerdo según el alcance.'],
+    ['¿Qué incluye el soporte?', 'Starter incluye hasta 1 hora mensual, Business hasta 2 horas, Professional hasta 4 horas y Enterprise define el soporte mediante contrato.'],
     ['¿Puedo cambiar de plan?', 'Sí. Los cambios deben revisarse con el equipo comercial según las funciones habilitadas y las condiciones del servicio.'],
   ],
   [
     ['What types of companies can use AmaxTech?', 'Businesses that sell physical products, such as distributors, wholesalers, hardware stores and catalog-based retailers.'],
+    ['How much does AmaxTech implementation cost?', 'Starter: $249 implementation and $129 monthly; Business: $399 and $219 monthly; Professional: $599 and $349 monthly; Enterprise: from $899 and from $499 monthly.'],
+    ['What does the monthly fee include?', 'The fee keeps the managed installation active, along with technical services, support based on the plan and general improvements when applicable.'],
+    ['Does every customer have an independent installation?', 'Yes. Each company receives its own project, database and configuration within infrastructure managed by AmaxTech.'],
+    ['How much technical support does each plan include?', 'Starter includes up to 1 hour monthly, Business up to 2 hours, Professional up to 4 hours and Enterprise according to contract.'],
     ['Can I manage an online store?', 'Yes. AmaxTech includes a public catalog, shopping cart and purchase requests according to the contracted configuration.'],
     ['Can I import products from Excel?', 'Yes. This capability is available in the Business plan and above.'],
     ['Can I manage multiple warehouses?', 'Multi-warehouse is available in the Professional plan and can be evaluated for an Enterprise implementation.'],
     ['Can I customize the system?', 'Yes, through an Enterprise implementation or a scope agreed before the project begins.'],
     ['How does implementation work?', 'We configure the company, upload or import the catalog, define inventory and the store, and then activate operations.'],
     ['Do I need technical knowledge?', 'No. Administration works in a browser, with guidance during setup and training.'],
-    ['Can I request a demonstration?', 'Yes. Complete the form and your email application will open with a request prepared for ventas@amaxtech.com.'],
+    ['Can I request a demonstration?', 'Yes. Complete the form and the request will be sent directly to the sales team by email.'],
     ['What happens to my data?', 'Data location, backups, export and retention terms must be confirmed contractually before contracting.'],
-    ['What does support include?', 'Starter and Business include standard support; Professional includes priority support. Enterprise support follows the agreed scope.'],
+    ['What does support include?', 'Starter includes up to 1 hour monthly, Business up to 2 hours, Professional up to 4 hours and Enterprise defines support through contract.'],
     ['Can I change plans?', 'Yes. Changes are reviewed with sales according to enabled features and service terms.'],
   ],
 ]
 
 const comparisonLabels = {
-  es: ['Catálogo', 'Tienda online', 'Inventario', 'Productos y variantes', 'Gestión de clientes', 'Cotizaciones', 'Pedidos', 'Importación Excel', 'Reportes', 'Multi-almacén', 'Despachos y rutas', 'Cuentas por cobrar', 'Integraciones', 'Asistente IA', 'Soporte'],
-  en: ['Catalog', 'Online store', 'Inventory', 'Products and variants', 'Customer management', 'Quotations', 'Orders', 'Excel import', 'Reports', 'Multi-warehouse', 'Dispatch and routes', 'Accounts receivable', 'Integrations', 'AI assistant', 'Support'],
+  es: ['Instalación independiente', 'Catálogo digital', 'Página comercial', 'Solicitudes de compra', 'Gestión básica de pedidos', 'Inventario y stock', 'Variantes de productos', 'Importación Excel', 'Gestión de clientes', 'Multi-almacén', 'Despachos y rutas', 'Cuentas por cobrar y pagos', 'Conciliación bancaria', 'Reportes', 'Usuarios administrativos', 'Soporte mensual'],
+  en: ['Independent installation', 'Digital catalog', 'Commercial page', 'Purchase requests', 'Basic order management', 'Inventory and stock', 'Product variants', 'Excel import', 'Customer management', 'Multi-warehouse', 'Dispatch and routes', 'Accounts receivable and payments', 'Bank reconciliation', 'Reports', 'Administrative users', 'Monthly support'],
 }
 
 const translateComparisonValue = (value: boolean | string, lang: 'es' | 'en') => {
   if (lang === 'es') return value
   const translations: Record<string, string> = {
     Básico: 'Basic',
+    Avanzados: 'Advanced',
+    'Hasta 1 hora': 'Up to 1 hour',
+    'Hasta 2 horas': 'Up to 2 hours',
+    'Hasta 4 horas': 'Up to 4 hours',
+    'Hasta 2': 'Up to 2',
+    'Hasta 5': 'Up to 5',
+    'Hasta 10': 'Up to 10',
+    Ampliada: 'Expanded',
+    'Según contrato': 'According to contract',
     Completo: 'Complete',
     Avanzado: 'Advanced',
     Adaptado: 'Customized',
@@ -135,7 +152,8 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const [sent, setSent] = useState(false)
-  const [mailLink, setMailLink] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [captcha, setCaptcha] = useState(() => ({
     left: Math.floor(Math.random() * 8) + 2,
     right: Math.floor(Math.random() * 8) + 2,
@@ -150,7 +168,7 @@ export default function Home() {
     document.documentElement.classList.toggle('light', dark)
   }
 
-  const submitLead = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitLead = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     if (String(data.get('website')).trim()) return
@@ -162,19 +180,51 @@ export default function Home() {
       return
     }
     setCaptchaError('')
-    const message = lang === 'es'
-      ? `Hola AmaxTech, quiero solicitar una demostración.\n\nNombre: ${data.get('name')}\nEmpresa: ${data.get('company')}\nCorreo: ${data.get('email')}\nPaís: ${data.get('country')}\nTipo de negocio: ${data.get('business')}\nProductos aproximados: ${data.get('products')}\nNecesidad principal: ${data.get('need')}`
-      : `Hello AmaxTech, I would like to book a demonstration.\n\nName: ${data.get('name')}\nCompany: ${data.get('company')}\nEmail: ${data.get('email')}\nCountry: ${data.get('country')}\nBusiness type: ${data.get('business')}\nApproximate products: ${data.get('products')}\nMain need: ${data.get('need')}`
-    setSent(true)
-    const subject = lang === 'es' ? 'Solicitud de demostración de AmaxTech' : 'AmaxTech demonstration request'
-    const link = `mailto:${salesEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
-    setMailLink(link)
-    window.location.href = link
-    setCaptchaAnswer('')
-    setCaptcha({
-      left: Math.floor(Math.random() * 8) + 2,
-      right: Math.floor(Math.random() * 8) + 2,
-    })
+    setSubmitError('')
+    setSubmitting(true)
+
+    try {
+      const response = await fetch('/api/demo-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.get('name'),
+          company: data.get('company'),
+          email: data.get('email'),
+          country: data.get('country'),
+          business: data.get('business'),
+          products: data.get('products'),
+          need: data.get('need'),
+          website: data.get('website'),
+          captchaLeft: captcha.left,
+          captchaRight: captcha.right,
+          captchaAnswer: Number(captchaAnswer),
+          lang,
+        }),
+      })
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || (lang === 'es'
+          ? 'No se pudo enviar la solicitud.'
+          : 'The request could not be sent.'))
+      }
+
+      setSent(true)
+      event.currentTarget.reset()
+      setCaptchaAnswer('')
+      setCaptcha({
+        left: Math.floor(Math.random() * 8) + 2,
+        right: Math.floor(Math.random() * 8) + 2,
+      })
+    } catch (error) {
+      setSent(false)
+      setSubmitError(error instanceof Error ? error.message : (lang === 'es'
+        ? 'No se pudo enviar la solicitud.'
+        : 'The request could not be sent.'))
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -417,7 +467,7 @@ export default function Home() {
               <p className="mb-3 text-sm font-medium text-primary">{lang === 'es' ? 'PLANES Y PRECIOS' : 'PLANS AND PRICING'}</p>
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{lang === 'es' ? 'Elige el nivel de operación que necesitas.' : 'Choose the operation level you need.'}</h2>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{lang === 'es' ? 'Propuesta de lanzamiento: $49, $89 y $149 USD/mes. Enterprise se cotiza según alcance.' : 'Launch proposal: $49, $89 and $149 USD/month. Enterprise is quoted by scope.'}</p>
+            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{lang === 'es' ? 'Un pago único de implementación y una mensualidad según el plan contratado.' : 'A one-time implementation payment and a monthly fee according to the contracted plan.'}</p>
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -425,7 +475,8 @@ export default function Home() {
               <article key={plan.name} className={`flex flex-col rounded-2xl border p-6 ${plan.popular ? 'border-primary bg-primary/10 shadow-lg shadow-primary/5' : 'border-border bg-card'}`}>
                 {plan.popular && <span className="mb-5 self-start rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">{lang === 'es' ? 'Más popular' : 'Most Popular'}</span>}
                 <h3 className="text-xl font-semibold">{plan.name}</h3>
-                <p className="mt-4 text-3xl font-semibold">{plan.price}{plan.period && <span className="text-sm font-normal text-muted-foreground"> {plan.period}</span>}</p>
+                <p className="mt-4 text-sm text-muted-foreground">{lang === 'es' ? 'Implementación' : 'Implementation'}: <span className="font-semibold text-foreground">{plan.implementation}</span></p>
+                <p className="mt-2 text-3xl font-semibold">{plan.price}{plan.period && <span className="text-sm font-normal text-muted-foreground"> {plan.period}</span>}</p>
                 <p className="mt-3 min-h-12 text-sm leading-relaxed text-muted-foreground">{plan.description[lang]}</p>
                 <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm">
                   {plan.features[lang].map((feature) => <li key={feature} className="flex gap-2"><Check className="mt-0.5 size-4 shrink-0 text-primary" /><span>{feature}</span></li>)}
@@ -439,8 +490,8 @@ export default function Home() {
 
           <p className="mt-6 rounded-xl border border-border bg-card px-4 py-3 text-xs leading-relaxed text-muted-foreground">
             {lang === 'es'
-              ? 'Precios de lanzamiento sujetos a confirmación comercial. El alcance final, soporte e infraestructura se especifican en la propuesta contratada.'
-              : 'Launch prices are subject to commercial confirmation. Final scope, support and infrastructure are specified in the contracted proposal.'}
+              ? 'Los precios oficiales corresponden a la modalidad de suscripción administrada por AmaxTech. Enterprise se cotiza según alcance.'
+              : 'Official prices apply to the AmaxTech-managed subscription model. Enterprise is quoted according to scope.'}
           </p>
         </div>
       </section>
@@ -466,25 +517,62 @@ export default function Home() {
       </section>
 
       <section className="border-y border-border bg-card/40 px-5 py-20 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_1fr]">
-          <article className="rounded-3xl border border-border bg-card p-8">
-            <p className="text-sm font-medium text-primary">{lang === 'es' ? 'SUSCRIPCIÓN MENSUAL' : 'MONTHLY SUBSCRIPTION'}</p>
-            <h2 className="mt-3 text-3xl font-semibold">{lang === 'es' ? 'Activa el plan y comienza la operación.' : 'Activate a plan and start operating.'}</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{lang === 'es' ? 'Paga una suscripción según el nivel contratado y recibe soporte según el plan. Los alcances, infraestructura y condiciones finales deben confirmarse antes de contratar.' : 'Pay according to the contracted level and receive support defined by that plan. Scope, infrastructure and final terms are confirmed before contracting.'}</p>
-          </article>
-          <article className="rounded-3xl border border-accent/40 bg-accent/10 p-8">
-            <p className="text-sm font-medium text-accent">{lang === 'es' ? 'LICENCIA DE USO E IMPLEMENTACIÓN' : 'LICENSE AND IMPLEMENTATION'}</p>
-            <h2 className="mt-3 text-3xl font-semibold">{lang === 'es' ? 'Contrato adaptado a tu operación.' : 'A contract adapted to your operation.'}</h2>
-            <p className="mt-5 font-mono text-4xl font-semibold text-accent">
-              {licenseMode.initialPrice}
-              <span className="font-sans text-sm font-medium text-muted-foreground">{lang === 'es' ? ' USD inicial' : ' USD initial'}</span>
-            </p>
-            <p className="mt-2 text-lg font-semibold">{licenseMode.maintenancePrice} USD <span className="text-sm font-normal text-muted-foreground">{licenseMode.period}</span></p>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{lang === 'es' ? 'La modalidad puede incluir implementación, capacitación y mantenimiento acordados. No incluye propiedad del código ni una licencia perpetua salvo que un contrato específico confirme expresamente ese derecho.' : 'This model may include agreed implementation, training and maintenance. It does not include source-code ownership or a perpetual license unless a specific contract expressly grants that right.'}</p>
-            <ul className="mt-5 grid gap-2 text-sm text-muted-foreground">
-              {licenseMode.scope[lang].map((item) => <li key={item} className="flex gap-2"><Check className="mt-0.5 size-4 shrink-0 text-accent" />{item}</li>)}
-            </ul>
-          </article>
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="mb-3 text-sm font-medium text-primary">{lang === 'es' ? 'INCLUIDO EN TODOS LOS PLANES' : 'INCLUDED IN EVERY PLAN'}</p>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{lang === 'es' ? 'Tu plataforma incluye mucho más que software' : 'Your platform includes much more than software'}</h2>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              lang === 'es' ? ['Instalación independiente', 'Proyecto, base de datos y configuración propios.'] : ['Independent installation', 'Your own project, database and configuration.'],
+              lang === 'es' ? ['Infraestructura administrada', 'AmaxTech administra el alojamiento y los servicios técnicos.'] : ['Managed infrastructure', 'AmaxTech manages hosting and technical services.'],
+              lang === 'es' ? ['Configuración inicial', 'Puesta en marcha según el plan contratado.'] : ['Initial setup', 'Launch according to the contracted plan.'],
+              lang === 'es' ? ['Diseño adaptable', 'Uso desde computadora, tablet y teléfono.'] : ['Responsive design', 'Use from computer, tablet and phone.'],
+              lang === 'es' ? ['Dominio personalizado', 'Configuración del dominio de tu empresa.'] : ['Custom domain', 'Configuration for your company domain.'],
+              lang === 'es' ? ['Capacitación inicial', 'Orientación para aprender a utilizar el sistema.'] : ['Initial training', 'Guidance to learn how to use the system.'],
+              lang === 'es' ? ['Soporte técnico', 'Atención dentro del límite de horas del plan.'] : ['Technical support', 'Assistance within the plan hourly allowance.'],
+              lang === 'es' ? ['Mantenimiento técnico', 'Atención de incidencias y mantenimiento.'] : ['Technical maintenance', 'Issue handling and installation maintenance.'],
+              lang === 'es' ? ['Actualizaciones', 'Mejoras generales cuando correspondan.'] : ['Updates', 'General improvements when applicable.'],
+              lang === 'es' ? ['Acceso administrativo', 'Usuarios y permisos según el plan.'] : ['Administrative access', 'Users and permissions according to the plan.'],
+            ].map(([title, text]) => (
+              <article key={title} className="rounded-2xl border border-border bg-card p-5">
+                <Check className="size-5 text-primary" />
+                <h3 className="mt-4 font-semibold">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/10 p-6 text-sm leading-relaxed sm:text-base">
+            {lang === 'es'
+              ? 'Tu empresa no tiene que preocuparse por contratar servidores, configurar bases de datos o administrar la infraestructura técnica. AmaxTech se encarga de esa parte para que puedas concentrarte en tu negocio.'
+              : 'Your company does not need to worry about servers, database setup or technical infrastructure. AmaxTech manages that part so you can focus on your business.'}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="mb-3 text-sm font-medium text-primary">{lang === 'es' ? 'TU INVERSIÓN' : 'YOUR INVESTMENT'}</p>
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{lang === 'es' ? 'Sin costos ocultos. Así funciona tu inversión.' : 'No hidden costs. Here is how your investment works.'}</h2>
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {[
+            lang === 'es'
+              ? ['Pago único de implementación', 'Se paga una sola vez al iniciar el servicio. Incluye instalación, configuración inicial y puesta en marcha según el plan.', '$249 · $399 · $599 · desde $899']
+              : ['One-time implementation payment', 'Paid once when the service starts. It includes installation, initial setup and launch according to the plan.', '$249 · $399 · $599 · from $899'],
+            lang === 'es'
+              ? ['Mensualidad', 'Mantiene activa la plataforma administrada, los servicios técnicos contratados y el soporte del plan.', '$129 · $219 · $349 · desde $499']
+              : ['Monthly fee', 'Keeps the managed platform, contracted technical services and plan support active.', '$129 · $219 · $349 · from $499'],
+            lang === 'es'
+              ? ['Servicios opcionales', 'Integraciones especiales, desarrollos específicos y requerimientos adicionales se cotizan aparte según el alcance.', 'Solo si los contratas']
+              : ['Optional services', 'Special integrations, custom development and additional requirements are quoted separately by scope.', 'Only if contracted'],
+          ].map(([title, text, price]) => (
+            <article key={title} className="rounded-2xl border border-border bg-card p-6">
+              <p className="text-sm font-medium text-primary">{title}</p>
+              <p className="mt-4 leading-relaxed text-muted-foreground">{text}</p>
+              <p className="mt-5 font-semibold">{price}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -527,7 +615,7 @@ export default function Home() {
             <div>
               <p className="text-sm font-medium text-primary-foreground/70">{lang === 'es' ? 'CONVERSACIÓN COMERCIAL' : 'COMMERCIAL CONVERSATION'}</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{lang === 'es' ? 'Solicita una demostración gratuita.' : 'Book a free demonstration.'}</h2>
-              <p className="mt-4 leading-relaxed text-primary-foreground/75">{lang === 'es' ? 'Cuéntanos qué necesita tu operación. Al enviar, se abrirá tu aplicación de correo con la solicitud preparada para ventas@amaxtech.com.' : 'Tell us what your operation needs. On submit, your email application opens with the request prepared for ventas@amaxtech.com.'}</p>
+              <p className="mt-4 leading-relaxed text-primary-foreground/75">{lang === 'es' ? 'Cuéntanos qué necesita tu operación. La solicitud se enviará directamente al equipo comercial.' : 'Tell us what your operation needs. The request will be sent directly to the sales team.'}</p>
             </div>
             <form onSubmit={submitLead} className="grid gap-3 sm:grid-cols-2">
               <input
@@ -594,14 +682,15 @@ export default function Home() {
                 </div>
                 {captchaError && <p id="captcha-error" role="alert" className="mt-2 text-sm font-medium text-primary-foreground">{captchaError}</p>}
               </div>
-              <Button type="submit" className="h-11 bg-primary-foreground text-primary hover:bg-primary-foreground/90 sm:col-span-2">
-                {sent ? (lang === 'es' ? 'Solicitud preparada' : 'Request prepared') : t.primaryCta}<ArrowRight />
+              <Button type="submit" disabled={submitting} className="h-11 bg-primary-foreground text-primary hover:bg-primary-foreground/90 sm:col-span-2">
+                {submitting
+                  ? (lang === 'es' ? 'Enviando...' : 'Sending...')
+                  : sent
+                    ? (lang === 'es' ? 'Solicitud enviada' : 'Request sent')
+                    : t.primaryCta}
+                <ArrowRight />
               </Button>
-              {sent && mailLink && (
-                <a href={mailLink} className="text-center text-xs underline underline-offset-4 sm:col-span-2">
-                  {lang === 'es' ? 'Abrir nuevamente la solicitud por correo' : 'Open the email request again'}
-                </a>
-              )}
+              {submitError && <p role="alert" className="text-sm font-medium sm:col-span-2">{submitError}</p>}
             </form>
           </div>
         </div>
@@ -612,11 +701,10 @@ export default function Home() {
           <div><a href="#inicio" className="flex items-center gap-2 font-bold"><span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Zap /></span><span className="text-xl">amax<span className="text-primary">tech</span></span></a><p className="mt-4 max-w-xs text-sm text-muted-foreground">Wholesale Commerce Management Platform.</p></div>
           <div><p className="text-sm font-semibold">{lang === 'es' ? 'Producto' : 'Product'}</p><div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground"><a href="#plataforma">{lang === 'es' ? 'Plataforma' : 'Platform'}</a><a href="#industrias">{lang === 'es' ? 'Industrias' : 'Industries'}</a><a href={manualUrl} target="_blank" rel="noreferrer">{lang === 'es' ? 'Manual' : 'Manual'}</a></div></div>
           <div><p className="text-sm font-semibold">{lang === 'es' ? 'Comercial' : 'Sales'}</p><div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground"><a href="#precios">{lang === 'es' ? 'Planes' : 'Plans'}</a><a href="#faq">FAQ</a><a href="#contacto">{lang === 'es' ? 'Solicitar demo' : 'Book a demo'}</a></div></div>
-          <div><p className="text-sm font-semibold">{lang === 'es' ? 'Contacto' : 'Contact'}</p><div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground"><a className="flex items-center gap-2" href={`mailto:${salesEmail}`}><Mail />{salesEmail}</a></div></div>
+          <div><p className="text-sm font-semibold">{lang === 'es' ? 'Contacto' : 'Contact'}</p><div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground"><Mail />{salesEmail}</div></div>
         </div>
         <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:justify-between"><p>© 2026 AmaxTech.</p><p>Catálogo, inventario, ventas y gestión comercial.</p></div>
       </footer>
-      <a href={`mailto:${salesEmail}?subject=${encodeURIComponent(lang === 'es' ? 'Solicitud de demostración AmaxTech' : 'AmaxTech demonstration request')}`} aria-label="Contactar por correo" className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 hover:scale-105"><Mail /></a>
     </main>
   )
 }

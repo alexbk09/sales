@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, ChevronDown, Languages, Mail, ShieldCheck, Zap } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ChevronDown, Languages, ShieldCheck, Zap } from 'lucide-react'
 import { useState } from 'react'
 
 const categories = {
@@ -22,6 +22,9 @@ const categories = {
       ['¿Qué ocurre con una solicitud de compra?', 'La solicitud queda estructurada para que el equipo dé seguimiento y continúe el proceso comercial.'],
     ]],
     ['Implementación y soporte', [
+      ['¿Cuánto cuesta cada plan?', 'Starter: $249 USD de implementación y $129 USD mensuales. Business: $399 y $219 mensuales. Professional: $599 y $349 mensuales. Enterprise: desde $899 y desde $499 mensuales.'],
+      ['¿Qué se incluye en todos los planes?', 'Instalación independiente, infraestructura administrada, configuración inicial, diseño adaptable, dominio personalizado, capacitación inicial, soporte técnico, mantenimiento técnico, actualizaciones y acceso administrativo según el plan.'],
+      ['¿Cuánto soporte incluye mi plan?', 'Starter incluye hasta 1 hora mensual, Business hasta 2 horas, Professional hasta 4 horas y Enterprise define el soporte mediante contrato.'],
       ['¿Cuánto tarda la puesta en marcha?', 'Depende del catálogo, configuración y alcance. La demostración permite establecer una ruta realista.'],
       ['¿Recibiré capacitación?', 'El acompañamiento y la capacitación se especifican según el plan o acuerdo contratado.'],
       ['¿Puedo solicitar una función particular?', 'Sí. Se evalúa mediante configuración, un módulo disponible o una personalización cotizada.'],
@@ -44,6 +47,9 @@ const categories = {
       ['What happens after a purchase request?', 'The request is structured so the team can follow up and continue the commercial process.'],
     ]],
     ['Implementation and support', [
+      ['How much does each plan cost?', 'Starter: $249 implementation and $129 monthly. Business: $399 and $219 monthly. Professional: $599 and $349 monthly. Enterprise: from $899 and from $499 monthly.'],
+      ['What is included in every plan?', 'Independent installation, managed infrastructure, initial setup, responsive design, custom domain, initial training, technical support, maintenance, updates and administrative access according to the plan.'],
+      ['How much support is included?', 'Starter includes up to 1 hour monthly, Business up to 2 hours, Professional up to 4 hours and Enterprise defines support through contract.'],
       ['How long does implementation take?', 'It depends on catalog, configuration and scope. The demonstration establishes a realistic timeline.'],
       ['Will my team receive training?', 'Training and guidance are specified by the contracted plan or agreement.'],
       ['Can I request a custom feature?', 'Yes. It is evaluated through configuration, an available module or a quoted customization.'],
@@ -101,7 +107,7 @@ export default function PreguntasFrecuentesPage() {
       <section className="border-t border-border bg-card/40 px-5 py-16 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 rounded-3xl border border-primary/30 bg-primary/10 px-6 py-10 sm:flex-row sm:items-center md:px-10">
           <div><p className="text-sm font-medium text-primary">{lang === 'es' ? '¿AÚN TIENES DUDAS?' : 'STILL HAVE QUESTIONS?'}</p><h2 className="mt-3 text-3xl font-semibold">{lang === 'es' ? 'Conversemos sobre tu operación.' : 'Let us discuss your operation.'}</h2></div>
-          <div className="flex flex-col gap-3 sm:flex-row"><Link href="/#contacto" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground">{lang === 'es' ? 'Solicitar demo' : 'Book a demo'}<ArrowRight /></Link><a href="mailto:ventas@amaxtech.com?subject=AmaxTech%20information%20request" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-5 text-sm font-medium"><Mail />{lang === 'es' ? 'Enviar correo' : 'Send email'}</a></div>
+          <div className="flex flex-col gap-3 sm:flex-row"><Link href="/#contacto" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground">{lang === 'es' ? 'Solicitar demo' : 'Book a demo'}<ArrowRight /></Link></div>
         </div>
       </section>
     </main>
