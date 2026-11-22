@@ -24,9 +24,9 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=465
 SMTP_USER=your-smtp-user@example.com
 SMTP_PASS=your-smtp-app-password
-SMTP_FROM=your-sender@example.com
+SMTP_FROM=your-verified-sender@example.com
 SMTP_SECURE=1
-CONTACT_TO_EMAIL=your-sales-inbox@example.com
+CONTACT_TO_EMAIL=alexbk09@hotmail.com
 ```
 
 Use a Gmail app password rather than the account password. The SMTP password must not be committed to Git.

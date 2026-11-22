@@ -60,7 +60,7 @@ export async function POST(request: Request) {
   const user = process.env.SMTP_USER
   const pass = process.env.SMTP_PASS
   const from = process.env.SMTP_FROM || user
-  const to = process.env.CONTACT_TO_EMAIL || process.env.SMTP_FROM || user
+  const to = process.env.CONTACT_TO_EMAIL || 'alexbk09@hotmail.com'
 
   if (!host || !user || !pass || !from || !to) {
     return NextResponse.json(

@@ -37,7 +37,7 @@ import { comparisonRows, licenseMode, subscriptionPlans } from '@/lib/pricing'
 
 const liveDemoUrl = 'https://ilumax.vercel.app/'
 const manualUrl = 'https://ilumax.vercel.app/manual/index.html'
-const salesEmail = 'ventas@amaxtech.com'
+const salesEmail = 'alexbk09@hotmail.com'
 
 type Copy = typeof copy.es
 
