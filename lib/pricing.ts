@@ -4,6 +4,7 @@ export type Plan = {
   period: string
   implementation: string
   description: { es: string; en: string }
+  ideal: { es: string; en: string }
   popular?: boolean
   features: { es: string[]; en: string[] }
 }
@@ -15,6 +16,7 @@ export const subscriptionPlans: Plan[] = [
     period: '/mes',
     implementation: '$249 USD',
     description: { es: 'Digitaliza tu catálogo y comienza a recibir pedidos.', en: 'Digitize your catalog and start receiving orders.' },
+    ideal: { es: 'Ideal para negocios pequeños que desean digitalizar su catálogo y comenzar a recibir pedidos.', en: 'Ideal for small businesses that want to digitize their catalog and start receiving orders.' },
     features: {
       es: ['Plataforma comercial independiente', 'Catálogo digital de productos', 'Categorías y marcas', 'Fichas con imágenes y precios', 'Página comercial', 'Solicitudes de compra', 'Gestión básica de pedidos', 'Enlaces a WhatsApp', 'Panel administrativo', 'Hasta 2 usuarios', 'Configuración y capacitación inicial', 'Infraestructura administrada', 'Soporte técnico: 1 hora mensual'],
       en: ['Independent commerce platform', 'Digital product catalog', 'Categories and brands', 'Product sheets with images and prices', 'Commercial page', 'Purchase requests', 'Basic order management', 'WhatsApp contact links', 'Administration panel', 'Up to 2 users', 'Initial setup and training', 'Managed infrastructure', 'Technical support: 1 hour monthly'],
@@ -26,6 +28,7 @@ export const subscriptionPlans: Plan[] = [
     period: '/mes',
     implementation: '$399 USD',
     description: { es: 'Controla productos, inventario y pedidos en una sola plataforma.', en: 'Control products, inventory and orders in one platform.' },
+    ideal: { es: 'Ideal para tiendas, distribuidores y mayoristas que necesitan controlar productos, inventario y pedidos desde una sola plataforma.', en: 'Ideal for stores, distributors and wholesalers that need to control products, inventory and orders from one platform.' },
     popular: true,
     features: {
       es: ['Todo lo incluido en Starter', 'Gestión de inventario y stock', 'Control de existencias', 'Variantes de productos', 'Gestión de proveedores', 'Importación masiva desde Excel', 'Gestión de clientes', 'Pedidos y seguimiento', 'Usuarios y roles', 'Herramientas de precios', 'Configuración comercial personalizada', 'Hasta 5 usuarios', 'Infraestructura administrada', 'Soporte técnico: 2 horas mensuales'],
@@ -38,6 +41,7 @@ export const subscriptionPlans: Plan[] = [
     period: '/mes',
     implementation: '$599 USD',
     description: { es: 'Organiza inventario, logística, pagos y administración.', en: 'Organize inventory, logistics, payments and administration.' },
+    ideal: { es: 'Ideal para empresas con mayor volumen de operaciones que necesitan organizar inventario, logística, pagos y administración.', en: 'Ideal for companies with higher operating volumes that need to organize inventory, logistics, payments and administration.' },
     features: {
       es: ['Todo lo incluido en Business', 'Gestión de múltiples almacenes', 'Despachos y rutas', 'Zonas de envío', 'Cuentas por cobrar', 'Registro y seguimiento de pagos', 'Conciliación bancaria', 'Reportes comerciales y operativos', 'Herramientas avanzadas de administración', 'Hasta 10 usuarios', 'Configuración avanzada', 'Infraestructura administrada', 'Soporte técnico: 4 horas mensuales'],
       en: ['Everything in Business', 'Multiple warehouse management', 'Dispatches and routes', 'Shipping zones', 'Accounts receivable', 'Payment registration and follow-up', 'Bank reconciliation', 'Commercial and operational reports', 'Advanced administration tools', 'Up to 10 users', 'Advanced configuration', 'Managed infrastructure', 'Technical support: 4 hours monthly'],
@@ -49,6 +53,7 @@ export const subscriptionPlans: Plan[] = [
     period: '/mes',
     implementation: 'Desde $899 USD',
     description: { es: 'Configuración adaptada a operaciones complejas y necesidades particulares.', en: 'Configuration adapted to complex operations and specific needs.' },
+    ideal: { es: 'Ideal para empresas con operaciones complejas o necesidades particulares de gestión comercial.', en: 'Ideal for companies with complex operations or specific commercial management requirements.' },
     features: {
       es: ['Todo lo disponible en Professional', 'Configuración personalizada', 'Evaluación de requerimientos operativos', 'Módulos y procesos adicionales acordados', 'Capacidad ampliada de usuarios', 'Acompañamiento en la puesta en marcha', 'Capacitación personalizada', 'Infraestructura administrada', 'Soporte según contrato', 'Integraciones y desarrollos específicos cotizados'],
       en: ['Everything available in Professional', 'Custom configuration', 'Operational requirement assessment', 'Agreed additional modules and processes', 'Expanded user capacity', 'Launch support', 'Custom training', 'Managed infrastructure', 'Contract-defined support', 'Quoted integrations and custom development'],

@@ -478,6 +478,7 @@ export default function Home() {
                 <p className="mt-4 text-sm text-muted-foreground">{lang === 'es' ? 'Implementación' : 'Implementation'}: <span className="font-semibold text-foreground">{plan.implementation}</span></p>
                 <p className="mt-2 text-3xl font-semibold">{plan.price}{plan.period && <span className="text-sm font-normal text-muted-foreground"> {plan.period}</span>}</p>
                 <p className="mt-3 min-h-12 text-sm leading-relaxed text-muted-foreground">{plan.description[lang]}</p>
+                <p className="mt-4 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground">{plan.ideal[lang]}</p>
                 <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm">
                   {plan.features[lang].map((feature) => <li key={feature} className="flex gap-2"><Check className="mt-0.5 size-4 shrink-0 text-primary" /><span>{feature}</span></li>)}
                 </ul>
