@@ -6,28 +6,27 @@ import { useState } from 'react'
 
 const categories = {
   es: [
-    ['Infraestructura', [
-      ['¿Qué pasa si se corta internet?', 'La plataforma requiere conexión a internet para acceder desde el navegador. Las condiciones de continuidad deben confirmarse contractualmente.'],
-      ['¿Necesito comprar servidores o instalar equipos?', 'No se requieren servidores locales para operar la plataforma web. Solo necesitas navegador y conexión a internet.'],
-      ['¿El sistema puede crecer con mi inventario?', 'Puedes organizar catálogos por categorías y marcas, administrar variantes e importar productos desde Excel en los planes habilitados.'],
+    ['AmaxTech y planes', [
+      ['¿Qué es AmaxTech?', 'AmaxTech es una plataforma comercial y administrativa diseñada para tiendas, distribuidores y mayoristas que necesitan gestionar sus productos, inventario, clientes y pedidos desde un solo lugar. Cada empresa cuenta con una instalación independiente, configurada según el plan contratado y las necesidades de su operación.'],
+      ['¿Cuánto cuesta comenzar a utilizar AmaxTech?', 'Para comenzar debes pagar una implementación inicial: Starter $249 USD; Business $399 USD; Professional $599 USD; Enterprise desde $899 USD. Este pago se realiza una sola vez al iniciar el servicio e incluye instalación, configuración inicial y puesta en marcha dentro del alcance contratado. Posteriormente se paga la mensualidad correspondiente: $129, $219, $349 o desde $499 USD, respectivamente.'],
+      ['¿Qué incluye la mensualidad?', 'Incluye acceso a la plataforma, infraestructura administrada por AmaxTech, mantenimiento técnico, atención de incidencias y soporte dentro de las horas establecidas en el plan. No necesitas contratar ni administrar servidores o bases de datos por separado.'],
+      ['¿Cada empresa tiene su propia plataforma?', 'Sí. Cada cliente dispone de una instalación independiente de AmaxTech, con su propio proyecto y base de datos, separando la información comercial y configuración de cada empresa.'],
     ]],
-    ['Seguridad y control', [
-      ['¿Quién puede ver precios, ventas e inventario?', 'La información se controla mediante usuarios, roles y permisos por módulo.'],
-      ['¿Cómo se protegen mis datos?', 'La protección se apoya en autenticación y permisos. Alojamiento, respaldos y conservación deben validarse en el acuerdo de servicio.'],
-      ['¿Puedo rastrear cambios?', 'Los permisos diferencian responsabilidades y el flujo exacto de trazabilidad se revisa durante la demostración.'],
+    ['Infraestructura y dominio', [
+      ['¿Tengo que contratar un servidor o servicio de hosting?', 'No. AmaxTech administra la infraestructura técnica necesaria mientras el servicio esté activo. El costo está contemplado en la mensualidad del plan contratado, sujeto a sus condiciones de uso y alcance.'],
+      ['¿Tengo que comprar mi propio dominio?', 'Sí. El dominio personalizado debe ser contratado y renovado por el cliente. AmaxTech realiza la configuración técnica necesaria para conectarlo con la plataforma.'],
+      ['¿Diseño adaptable?', 'Sí. Puedes acceder desde computadoras, tablets y teléfonos.'],
     ]],
-    ['Ventas y operación', [
-      ['¿Cómo se cargan muchos productos?', 'Mediante importación Excel en los planes habilitados, con una plantilla acordada.'],
-      ['¿Puedo manejar cotizaciones y facturación?', 'Sí, según el plan y la configuración contratada. Confirmaremos el alcance antes de la implementación.'],
-      ['¿Qué ocurre con una solicitud de compra?', 'La solicitud queda estructurada para que el equipo dé seguimiento y continúe el proceso comercial.'],
+    ['Soporte y cambios', [
+      ['¿Cuántas horas de soporte incluye cada plan?', 'Starter: hasta 1 hora mensual. Business: hasta 2 horas mensuales. Professional: hasta 4 horas mensuales. Enterprise: según las condiciones acordadas en el contrato. El soporte contempla consultas de funcionamiento, incidencias técnicas y configuración básica.'],
+      ['¿Puedo cambiar de plan posteriormente?', 'Sí. Puedes solicitar un cambio cuando tu empresa necesite más funcionalidades, capacidad o herramientas. Estará sujeto a evaluación de necesidades, diferencias de precio y condiciones de implementación.'],
+      ['¿Puedo solicitar nuevas funcionalidades?', 'Sí. Podemos evaluar necesidades específicas y preparar una propuesta. Funcionalidades adicionales, integraciones externas y personalizaciones fuera del plan se cotizan por separado y requieren aprobación previa.'],
     ]],
-    ['Implementación y soporte', [
-      ['¿Cuánto cuesta cada plan?', 'Starter: $249 USD de implementación y $129 USD mensuales. Business: $399 y $219 mensuales. Professional: $599 y $349 mensuales. Enterprise: desde $899 y desde $499 mensuales.'],
-      ['¿Qué se incluye en todos los planes?', 'Instalación independiente, infraestructura administrada, configuración inicial, diseño adaptable, dominio personalizado, capacitación inicial, soporte técnico, mantenimiento técnico, actualizaciones y acceso administrativo según el plan.'],
-      ['¿Cuánto soporte incluye mi plan?', 'Starter incluye hasta 1 hora mensual, Business hasta 2 horas, Professional hasta 4 horas y Enterprise define el soporte mediante contrato.'],
-      ['¿Cuánto tarda la puesta en marcha?', 'Depende del catálogo, configuración y alcance. La demostración permite establecer una ruta realista.'],
-      ['¿Recibiré capacitación?', 'El acompañamiento y la capacitación se especifican según el plan o acuerdo contratado.'],
-      ['¿Puedo solicitar una función particular?', 'Sí. Se evalúa mediante configuración, un módulo disponible o una personalización cotizada.'],
+    ['Datos y condiciones', [
+      ['¿Mis datos comerciales me pertenecen?', 'Sí. Los datos comerciales de tu empresa, como productos, clientes, pedidos e información operativa, te pertenecen. AmaxTech los administra técnicamente para prestar el servicio y facilitará su exportación conforme al procedimiento contractual.'],
+      ['¿Qué ocurre si decido cancelar el servicio?', 'El contrato contempla un periodo inicial de tres meses. Después, el servicio se renueva mensualmente y puede cancelarse con aviso previo de 30 días. Al finalizar se coordinará la exportación y finalización de la infraestructura según las condiciones y plazos contractuales.'],
+      ['¿Cuánto tarda la implementación?', 'El tiempo estimado es de un día laborable una vez recibidos todos los accesos, credenciales, información del negocio, catálogo y dominio necesarios. Si se requieren trabajos adicionales, se comunicará previamente el tiempo estimado.'],
+      ['¿WhatsApp está incluido?', 'AmaxTech permite incorporar enlaces de contacto y acciones para continuar conversaciones o gestionar solicitudes mediante WhatsApp. Automatizaciones o WhatsApp Business API no están incluidos salvo contratación expresa.'],
     ]],
   ],
   en: [
@@ -77,8 +76,8 @@ export default function PreguntasFrecuentesPage() {
       <section className="border-b border-border px-5 pb-16 pt-20 lg:px-8 lg:pb-24 lg:pt-28">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"><ShieldCheck />{lang === 'es' ? 'Transparencia antes de contratar' : 'Transparency before contracting'}</div>
-          <h1 className="max-w-3xl text-balance text-5xl font-semibold tracking-[-0.05em] sm:text-6xl">{lang === 'es' ? 'Respuestas claras para decidir.' : 'Clear answers to help you decide.'}</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{lang === 'es' ? 'Información sobre infraestructura, seguridad, operación e implementación basada en el alcance verificable de la plataforma.' : 'Information about infrastructure, security, operations and implementation based on the platform capabilities that can be verified.'}</p>
+          <h1 className="max-w-3xl text-balance text-5xl font-semibold tracking-[-0.05em] sm:text-6xl">{lang === 'es' ? 'Preguntas frecuentes' : 'Frequently asked questions'}</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{lang === 'es' ? 'Resuelve tus dudas antes de comenzar. Te explicamos cómo funciona AmaxTech, qué incluye tu servicio y cómo trabajamos.' : 'Resolve your questions before getting started. We explain how AmaxTech works, what your service includes and how we operate.'}</p>
         </div>
       </section>
 
@@ -107,7 +106,7 @@ export default function PreguntasFrecuentesPage() {
       <section className="border-t border-border bg-card/40 px-5 py-16 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 rounded-3xl border border-primary/30 bg-primary/10 px-6 py-10 sm:flex-row sm:items-center md:px-10">
           <div><p className="text-sm font-medium text-primary">{lang === 'es' ? '¿AÚN TIENES DUDAS?' : 'STILL HAVE QUESTIONS?'}</p><h2 className="mt-3 text-3xl font-semibold">{lang === 'es' ? 'Conversemos sobre tu operación.' : 'Let us discuss your operation.'}</h2></div>
-          <div className="flex flex-col gap-3 sm:flex-row"><Link href="/#contacto" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground">{lang === 'es' ? 'Solicitar demo' : 'Book a demo'}<ArrowRight /></Link></div>
+          <div className="flex flex-col gap-3 sm:flex-row"><Link href="/#contacto" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground">{lang === 'es' ? 'Solicitar una demostración' : 'Request a demonstration'}<ArrowRight /></Link></div>
         </div>
       </section>
     </main>

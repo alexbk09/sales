@@ -5,7 +5,9 @@ type DemoRequest = {
   name: string
   company: string
   email: string
+  phone: string
   country: string
+  plan: string
   business: string
   products: string
   need: string
@@ -38,7 +40,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 })
   }
 
-  const requiredFields = ['name', 'company', 'email', 'country', 'business', 'products', 'need'] as const
+  const requiredFields = ['name', 'company', 'email', 'phone', 'country', 'plan', 'business', 'products'] as const
   if (requiredFields.some((field) => !String(body[field] ?? '').trim())) {
     return NextResponse.json({ error: 'Completa todos los campos requeridos.' }, { status: 400 })
   }
@@ -73,10 +75,12 @@ export async function POST(request: Request) {
     name: escapeHtml(body.name.trim()),
     company: escapeHtml(body.company.trim()),
     email: escapeHtml(body.email.trim()),
+    phone: escapeHtml(body.phone.trim()),
     country: escapeHtml(body.country.trim()),
+    plan: escapeHtml(body.plan.trim()),
     business: escapeHtml(body.business.trim()),
     products: escapeHtml(body.products.trim()),
-    need: escapeHtml(body.need.trim()).replaceAll('\n', '<br />'),
+    need: escapeHtml(String(body.need ?? '').trim()).replaceAll('\n', '<br />'),
   }
 
   const subject = body.lang === 'en'
@@ -102,7 +106,9 @@ export async function POST(request: Request) {
         `Name / Nombre: ${body.name.trim()}`,
         `Company / Empresa: ${body.company.trim()}`,
         `Email / Correo: ${body.email.trim()}`,
+        `Phone / WhatsApp: ${body.phone.trim()}`,
         `Country / País: ${body.country.trim()}`,
+        `Plan / Plan de interés: ${body.plan.trim()}`,
         `Business type / Tipo de negocio: ${body.business.trim()}`,
         `Approximate products / Productos aproximados: ${body.products.trim()}`,
         `Main need / Necesidad principal: ${body.need.trim()}`,
@@ -112,7 +118,9 @@ export async function POST(request: Request) {
         <p><strong>${body.lang === 'en' ? 'Name' : 'Nombre'}:</strong> ${safe.name}</p>
         <p><strong>${body.lang === 'en' ? 'Company' : 'Empresa'}:</strong> ${safe.company}</p>
         <p><strong>${body.lang === 'en' ? 'Email' : 'Correo'}:</strong> ${safe.email}</p>
+        <p><strong>${body.lang === 'en' ? 'Phone / WhatsApp' : 'Teléfono / WhatsApp'}:</strong> ${safe.phone}</p>
         <p><strong>${body.lang === 'en' ? 'Country' : 'País'}:</strong> ${safe.country}</p>
+        <p><strong>${body.lang === 'en' ? 'Plan of interest' : 'Plan de interés'}:</strong> ${safe.plan}</p>
         <p><strong>${body.lang === 'en' ? 'Business type' : 'Tipo de negocio'}:</strong> ${safe.business}</p>
         <p><strong>${body.lang === 'en' ? 'Approximate products' : 'Productos aproximados'}:</strong> ${safe.products}</p>
         <p><strong>${body.lang === 'en' ? 'Main need' : 'Necesidad principal'}:</strong><br />${safe.need}</p>
