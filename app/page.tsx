@@ -764,7 +764,13 @@ export default function Home() {
           <div><p className="text-sm font-semibold">{lang === 'es' ? 'Producto' : 'Product'}</p><div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground"><a href="#plataforma">{lang === 'es' ? 'Plataforma' : 'Platform'}</a><a href="#industrias">{lang === 'es' ? 'Industrias' : 'Industries'}</a><a href={manualUrl} target="_blank" rel="noreferrer">{lang === 'es' ? 'Manual' : 'Manual'}</a></div></div>
           <div><p className="text-sm font-semibold">{lang === 'es' ? 'Contacto' : 'Contact'}</p><div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground"><Mail />{salesEmail}</div></div>
         </div>
-        <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:justify-between"><p>© 2026 AmaxTech.</p><p>Catálogo, inventario, ventas y gestión comercial.</p></div>
+        <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 AmaxTech.</p>
+          <div className="flex flex-wrap gap-5">
+            <a href="/condiciones-del-servicio" className="hover:text-foreground">Condiciones del Servicio</a>
+            <p>Catálogo, inventario, ventas y gestión comercial.</p>
+          </div>
+        </div>
       </footer>
     </main>
   )
